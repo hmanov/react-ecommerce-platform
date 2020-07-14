@@ -1,14 +1,14 @@
 import React from 'react';
 import './App.css';
 
-import { Container } from './Styled/Container';
+import { ContainerBody } from './Styled/Container';
 import Navbar from './components/layout/Navbar';
 
 function App() {
   return (
-    <Container>
+    <ContainerBody>
       <Navbar />
-    </Container>
+    </ContainerBody>
   );
 }
 
