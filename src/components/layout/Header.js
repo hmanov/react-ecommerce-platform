@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   HeaderTop,
   SocialContainer,
@@ -12,6 +13,16 @@ import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
+  const isLogged = false;
+  const [isModalShowed, setIsModalShowed] = useState(false);
+  let history = useHistory();
+  const userHandler = () => {
+    if (isLogged) {
+      history.push('/login');
+    } else {
+      setIsModalShowed(!isModalShowed);
+    }
+  };
   return (
     <HeaderTop>
       <SocialContainer>
@@ -20,11 +31,11 @@ const Header = () => {
         <AwesomeIcon icon={faYoutube} hovercolor='#c4302b' />
       </SocialContainer>
       <ProfileContainer>
-        <ShoppingCartLink>
+        <ShoppingCartLink to='/cart'>
           <AwesomeIcon icon={faShoppingCart} hovercolor='#eece1a' />
           <ShoppingCartCounter>1</ShoppingCartCounter>
         </ShoppingCartLink>
-        <AwesomeIcon icon={faUser} hovercolor='#eece1a' />
+        <AwesomeIcon icon={faUser} hovercolor='#eece1a' onClick={userHandler} />
       </ProfileContainer>
     </HeaderTop>
   );

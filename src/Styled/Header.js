@@ -42,15 +42,32 @@ export const NavContainer = styled.div`
   width: 100%;
   height: 50px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
 `;
-export const NavLink = styled(Link)`
+export const NavLinksContainer = styled.div`
   z-index: 1;
+`;
+export const NavLogo = styled(Link)`
+  color: #eece1a;
+  z-index: 1;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  font-size: 50px;
+  line-height: 50px;
+  font-weight: 500;
+
+  font-style: italic;
+  letter-spacing: 0px;
+  cursor: pointer;
+`;
+export const NavigationLink = styled(Link)`
   padding: 10px;
   font-size: 20px;
   text-decoration: none;
   transition: all 0.8s ease-in-out;
   color: white;
+
   &:hover {
     color: #eece1a;
   }

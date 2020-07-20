@@ -6,16 +6,18 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  z-index: 1;
 `;
 export const ContainerBody = styled.div`
+  position: relative;
   background: url(${require('../assets/img/background.jpg')}) center center no-repeat;
   background-attachment: fixed;
-
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
 
   &::after {
     content: '';

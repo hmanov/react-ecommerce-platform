@@ -1,12 +1,17 @@
 import React from 'react';
-import { NavContainer, NavLink } from '../../Styled/Header';
+import { NavContainer, NavigationLink, NavLogo, NavLinksContainer } from '../../Styled/Header';
 const HeaderNav = () => {
   return (
     <NavContainer>
-      <NavLink>Home</NavLink>
-      <NavLink>Shop</NavLink>
-      <NavLink>Contacts</NavLink>
-      <NavLink>About</NavLink>
+      <NavLinksContainer>
+        <NavLogo>MKS</NavLogo>
+      </NavLinksContainer>
+      <NavLinksContainer>
+        <NavigationLink to='/'>Home</NavigationLink>
+        <NavigationLink to='/shop'>Shop</NavigationLink>
+        <NavigationLink to='/contacts'>Contacts</NavigationLink>
+        <NavigationLink to='/about'>About</NavigationLink>
+      </NavLinksContainer>
     </NavContainer>
   );
 };
