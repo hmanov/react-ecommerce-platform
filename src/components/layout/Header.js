@@ -23,6 +23,7 @@ const Header = () => {
       setIsModalShowed(!isModalShowed);
     }
   };
+
   return (
     <HeaderTop>
       <SocialContainer>

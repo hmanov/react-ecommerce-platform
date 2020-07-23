@@ -9,6 +9,7 @@ export const Container = styled.div`
   z-index: 1;
 `;
 export const ContainerCenter = styled.div`
+
   max-width: 1200px;
   width: 100%;
   display: flex;

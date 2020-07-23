@@ -9,7 +9,7 @@ const HeaderNav = () => {
       <NavLinksContainer>
         <NavigationLink to='/'>Home</NavigationLink>
         <NavigationLink to='/shop'>Shop</NavigationLink>
-        <NavigationLink to='/contacts'>Contacts</NavigationLink>
+        <NavigationLink to='/contact'>Contacts</NavigationLink>
         <NavigationLink to='/about'>About</NavigationLink>
       </NavLinksContainer>
     </NavContainer>

@@ -5,6 +5,7 @@ export const HeaderTop = styled.div`
   max-width: 1200px;
   width: 100%;
   height: 50px;
+  margin-top: 20px;
   display: flex;
   justify-content: space-between;
   border-bottom: 2px #eece1a solid;
@@ -43,7 +44,6 @@ export const AwesomeIcon = styled(FontAwesomeIcon)`
 export const NavContainer = styled.div`
   max-width: 1200px;
   width: 100%;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -62,7 +62,7 @@ export const NavLogo = styled(Link)`
   z-index: 1;
   margin-block-start: 0;
   margin-block-end: 0;
-  font-size: 50px;
+  font-size: 40px;
   line-height: 50px;
   font-weight: 600;
 
