@@ -4,12 +4,12 @@ const HeaderNav = () => {
   return (
     <NavContainer>
       <NavLinksContainer>
-        <NavLogo>MKS</NavLogo>
+        <NavLogo to='/'>MKS</NavLogo>
       </NavLinksContainer>
       <NavLinksContainer>
         <NavigationLink to='/'>Home</NavigationLink>
         <NavigationLink to='/shop'>Shop</NavigationLink>
-        <NavigationLink to='/contacts'>Contacts</NavigationLink>
+        <NavigationLink to='/contact'>Contacts</NavigationLink>
         <NavigationLink to='/about'>About</NavigationLink>
       </NavLinksContainer>
     </NavContainer>

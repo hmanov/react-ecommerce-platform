@@ -8,6 +8,14 @@ export const Container = styled.div`
   justify-content: flex-start;
   z-index: 1;
 `;
+export const ContainerCenter = styled.div`
+
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 export const ContainerBody = styled.div`
   position: relative;
   background: url(${require('../assets/img/background.jpg')}) center center no-repeat;
