@@ -32,7 +32,6 @@ export const AwesomeIcon = styled(FontAwesomeIcon)`
   font-size: 25px;
   padding: 10px;
   color: white;
-
   transition: all 0.3s ease-in-out;
   &:hover {
     color: ${(props) => props.hovercolor && props.hovercolor};

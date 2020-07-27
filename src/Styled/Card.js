@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 export const FeaturedCard = styled.div`
   max-width: 350px;
   width: 100%;
@@ -7,7 +8,7 @@ export const FeaturedCard = styled.div`
   flex-direction: column;
   align-items: center;
   flex: 0 0 33%;
-
+  margin-bottom: 80px;
   gap: 20px;
   &:nth-child(2) {
     margin: 0 20px;

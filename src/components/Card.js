@@ -1,12 +1,17 @@
 import React from 'react';
 import { FeaturedCard, FeaturedCardImg, FeaturedCardTitle, FeaturedCardPrice } from '../Styled/Card';
-const Card = () => {
+import { Link } from 'react-router-dom';
+
+const Card = ({ data: { name, price, sku, imgUrl }, to }) => {
   return (
-    <FeaturedCard>
-      <FeaturedCardPrice>$199</FeaturedCardPrice>
-      <FeaturedCardImg src={'https://p1.akcdn.net/full/574756884.ducky-one-2-rgb-tkl-dkon1787st.jpg'} />
-      <FeaturedCardTitle>Ducky One 2 TKL RGB</FeaturedCardTitle>
-    </FeaturedCard>
+    <Link to={to}>
+      <FeaturedCard>
+        <FeaturedCardPrice>{price}</FeaturedCardPrice>
+        <FeaturedCardImg src={imgUrl} />
+        <FeaturedCardTitle>{name}</FeaturedCardTitle>
+        <FeaturedCardTitle>{sku}</FeaturedCardTitle>
+      </FeaturedCard>
+    </Link>
   );
 };
 

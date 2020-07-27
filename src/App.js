@@ -3,29 +3,40 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import { ContainerBody, Container } from './Styled/Container';
 import Navbar from './components/layout/Navbar';
-import Home from './pages/Home';
-import About from './pages/About';
-import Shop from './pages/Shop';
-import Contact from './pages/Contact';
+import Home from './components/pages/Home';
+import About from './components/pages/About';
+import Shop from './components/pages/Shop';
+import Contact from './components/pages/Contact';
+import Register from './components/pages/Register';
 
 import { ThemeProvider } from 'styled-components';
 import { theme } from './Styled/theme';
 
+//context
+
+import AuthProvider from './context/AuthProvider';
+import ProductProvider from './context/ProductProvider';
+
 const App = () => (
-  <ThemeProvider theme={theme}>
-    <Router>
-      <ContainerBody>
-        <Navbar />
-        <Container>
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/shop' component={Shop} />
-            <Route exact path='/contact' component={Contact} />
-            <Route exact path='/about' component={About} />
-          </Switch>
-        </Container>
-      </ContainerBody>
-    </Router>
-  </ThemeProvider>
+  <AuthProvider>
+    <ProductProvider>
+      <ThemeProvider theme={theme}>
+        <Router>
+          <ContainerBody>
+            <Navbar />
+            <Container>
+              <Switch>
+                <Route exact path='/' component={Home} />
+                <Route exact path='/shop' component={Shop} />
+                <Route exact path='/contact' component={Contact} />
+                <Route exact path='/about' component={About} />
+                <Route exact path='/register' component={Register} />
+              </Switch>
+            </Container>
+          </ContainerBody>
+        </Router>
+      </ThemeProvider>
+    </ProductProvider>
+  </AuthProvider>
 );
 export default App;

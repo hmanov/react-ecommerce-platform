@@ -9,7 +9,6 @@ export const Container = styled.div`
   z-index: 1;
 `;
 export const ContainerCenter = styled.div`
-
   max-width: 1200px;
   width: 100%;
   display: flex;
@@ -33,7 +32,7 @@ export const ContainerBody = styled.div`
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
-    background-color: rgba(68, 68, 68, 0.7);
+    min-height: 100%;
+    background-color: rgba(68, 68, 68, 0.4);
   }
 `;
