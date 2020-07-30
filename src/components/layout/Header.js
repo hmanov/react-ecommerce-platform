@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
   HeaderTop,
@@ -11,16 +11,19 @@ import {
 import { faInstagram, faYoutube, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { ThemeContext } from 'styled-components';
+import AuthMenu from '../layout/AuthMenu';
 
 const Header = () => {
+  const theme = useContext(ThemeContext);
   const isLogged = false;
-  const [isModalShowed, setIsModalShowed] = useState(false);
+  const [isAuthMenuVisible, setIsAuthMenuVisible] = useState(false);
   let history = useHistory();
   const userHandler = () => {
     if (isLogged) {
       history.push('/login');
     } else {
-      setIsModalShowed(!isModalShowed);
+      setIsAuthMenuVisible(!isAuthMenuVisible);
     }
   };
 
@@ -31,12 +34,15 @@ const Header = () => {
         <AwesomeIcon icon={faTwitter} hovercolor='#00acee' />
         <AwesomeIcon icon={faYoutube} hovercolor='#c4302b' />
       </SocialContainer>
+      {!isLogged && <AuthMenu isAuthMenuVisible={isAuthMenuVisible} />}
       <ProfileContainer>
         <ShoppingCartLink to='/cart'>
-          <AwesomeIcon icon={faShoppingCart} hovercolor='#eece1a' />
+          <AwesomeIcon icon={faShoppingCart} hovercolor={theme.primary} />
+
           <ShoppingCartCounter>1</ShoppingCartCounter>
         </ShoppingCartLink>
-        <AwesomeIcon icon={faUser} hovercolor='#eece1a' onClick={userHandler} />
+
+        <AwesomeIcon icon={faUser} hovercolor={theme.primary} onClick={userHandler} />
       </ProfileContainer>
     </HeaderTop>
   );

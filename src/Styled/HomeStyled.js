@@ -9,6 +9,7 @@ export const CustomColor = styled.span`
   font-style: italic;
 `;
 export const Featured = styled.div`
+  position: relative;
   margin-top: 50px;
   width: 100%;
   display: flex;

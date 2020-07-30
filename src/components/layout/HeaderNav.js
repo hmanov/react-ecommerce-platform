@@ -11,8 +11,6 @@ const HeaderNav = () => {
         <NavigationLink to='/shop'>Shop</NavigationLink>
         <NavigationLink to='/contact'>Contacts</NavigationLink>
         <NavigationLink to='/about'>About</NavigationLink>
-        <NavigationLink to='/login'>login</NavigationLink>
-        <NavigationLink to='/register'>register</NavigationLink>
       </NavLinksContainer>
     </NavContainer>
   );
