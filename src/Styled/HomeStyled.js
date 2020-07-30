@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 export const Slogan = styled.h1`
-  color: #fff;
+  color: ${(props) => props.theme.dark};
   font-size: 48px;
 `;
 

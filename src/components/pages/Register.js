@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
-import { Form, FormInput } from '../../Styled/Form';
+import React, { useState, useContext } from 'react';
+import { Form, FormInput, FormTitle, FormButton } from '../../Styled/Form';
+import { register } from '../../context/actions/authActions';
+
+import { AuthContext } from '../../context/AuthProvider';
 const Register = () => {
   const [formData, setFormData] = useState({
     email: '',
@@ -9,10 +12,10 @@ const Register = () => {
     repeatPassword: '',
   });
   const { email, firstName, lastName, password, repeatPassword } = formData;
-
+  const { authState, authDispatch } = useContext(AuthContext);
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(formData);
+    register(authDispatch, formData);
   };
 
   const onChangeHandler = (e) => {
@@ -21,7 +24,7 @@ const Register = () => {
 
   return (
     <Form onSubmit={submitHandler}>
-      <h2>Register</h2>
+      <FormTitle>Registration Form</FormTitle>
       <FormInput placeholder='Email' name='email' value={email} onChange={onChangeHandler} />
       <FormInput placeholder='First Name' name='firstName' value={firstName} onChange={onChangeHandler} />
       <FormInput placeholder='Last Name' name='lastName' value={lastName} onChange={onChangeHandler} />
@@ -32,7 +35,7 @@ const Register = () => {
         value={repeatPassword}
         onChange={onChangeHandler}
       />
-      <button>Register</button>
+      <FormButton>Register</FormButton>
     </Form>
   );
 };

@@ -33,6 +33,6 @@ export const ContainerBody = styled.div`
     left: 0;
     width: 100vw;
     min-height: 100%;
-    background-color: rgba(68, 68, 68, 0.4);
+    background-color: rgba(255, 255, 255, 1);
   }
 `;

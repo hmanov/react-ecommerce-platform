@@ -7,12 +7,13 @@ export const ProductsReducer = (state, action) => {
 
   switch (type) {
     case 'GET_PRODUCTS':
-      return { ...state, featured: payload };
+      return { ...state, featured: payload, isLoading: false };
     default:
       return state;
   }
 };
 const initialState = {
+  isLoading: true,
   featured: [],
   products: [],
 };

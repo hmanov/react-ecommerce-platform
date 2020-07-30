@@ -8,7 +8,7 @@ export const HeaderTop = styled.div`
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
-  border-bottom: 2px #eece1a solid;
+  border-bottom: 2px ${(props) => props.theme.primary} solid;
   z-index: 1;
   @media (max-width: 600px) {
     justify-content: space-evenly;
@@ -31,7 +31,7 @@ export const ProfileContainer = styled.div`
 export const AwesomeIcon = styled(FontAwesomeIcon)`
   font-size: 25px;
   padding: 10px;
-  color: white;
+  color: ${(props) => props.theme.dark};
   transition: all 0.3s ease-in-out;
   &:hover {
     color: ${(props) => props.hovercolor && props.hovercolor};
@@ -57,7 +57,7 @@ export const NavLinksContainer = styled.div`
   }
 `;
 export const NavLogo = styled(Link)`
-  color: #eece1a;
+  color: ${(props) => props.theme.primary};
   z-index: 1;
   margin-block-start: 0;
   margin-block-end: 0;
@@ -74,7 +74,7 @@ export const NavigationLink = styled(Link)`
   font-size: 20px;
   text-decoration: none;
   transition: all 0.2s ease-in;
-  color: white;
+  color: ${(props) => props.theme.dark};
 
   &:hover {
     color: ${(props) => props.theme.primary};
