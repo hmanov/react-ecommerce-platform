@@ -5,7 +5,7 @@ export const authReducer = (state, action) => {
 
   switch (type) {
     case 'LOG_IN':
-      return { ...state, isAuth: !state.isAuth };
+      return { ...state, isAuth: !state.isAuth, user: payload };
     default:
       return state;
   }

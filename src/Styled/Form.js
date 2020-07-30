@@ -106,5 +106,6 @@ export const FormButton = styled.button`
   background-position: right bottom;
   transition: all 0.3s ease-in-out;
   &:hover {
+    color: red;
   }
 `;

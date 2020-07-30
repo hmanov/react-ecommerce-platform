@@ -19,7 +19,7 @@ const Home = () => {
     };
     getData();
   }, [productDispach]);
-  console.log(isLoading);
+
   return (
     <ContainerCenter>
       <Slogan>

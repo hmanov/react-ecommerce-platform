@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef, useEffect, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
   HeaderTop,
@@ -15,10 +15,29 @@ import { ThemeContext } from 'styled-components';
 import AuthMenu from '../layout/AuthMenu';
 
 const Header = () => {
-  const theme = useContext(ThemeContext);
-  const isLogged = false;
   const [isAuthMenuVisible, setIsAuthMenuVisible] = useState(false);
+  const onBlurHandler = useCallback(
+    (event) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target) && isAuthMenuVisible) {
+        setIsAuthMenuVisible(!isAuthMenuVisible);
+      }
+    },
+    [isAuthMenuVisible]
+  );
+
+  useEffect(() => {
+    document.addEventListener('click', onBlurHandler, false);
+    return () => {
+      document.removeEventListener('click', onBlurHandler, false);
+    };
+  }, [onBlurHandler]);
+
+  const theme = useContext(ThemeContext);
+  const wrapperRef = useRef(null);
+  const isLogged = false;
+
   let history = useHistory();
+
   const userHandler = () => {
     if (isLogged) {
       history.push('/login');
@@ -28,7 +47,7 @@ const Header = () => {
   };
 
   return (
-    <HeaderTop>
+    <HeaderTop onBlur={onBlurHandler} ref={wrapperRef}>
       <SocialContainer>
         <AwesomeIcon icon={faInstagram} hovercolor='#8a3ab9' />
         <AwesomeIcon icon={faTwitter} hovercolor='#00acee' />

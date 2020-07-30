@@ -18,7 +18,7 @@ const Register = () => {
   });
 
   const { email, firstName, lastName, password, repeatPassword } = registerFormData;
-  const { authState, authDispatch } = useContext(AuthContext);
+  const { authDispatch } = useContext(AuthContext);
   const registerSubmitHandler = (e) => {
     e.preventDefault();
     register(authDispatch, registerFormData);
@@ -38,7 +38,7 @@ const Register = () => {
   return (
     <FormContainer>
       <Form onSubmit={loginSubmitHandler}>
-        <FormTitle>LogIn</FormTitle>
+        <FormTitle>Login</FormTitle>
         <FormInput placeholder='Email' name='email' value={loginFormData.email} onChange={loginOnChangeHandler} />
         <FormInput
           placeholder='Password'
