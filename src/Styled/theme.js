@@ -1,3 +1,4 @@
 export const theme = {
-  primary: '#eece1a',
+  primary: '#00adc7',
+  dark: '#484848',
 };

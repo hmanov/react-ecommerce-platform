@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 export const Slogan = styled.h1`
-  color: #fff;
+  color: ${(props) => props.theme.dark};
   font-size: 48px;
 `;
 
@@ -9,6 +9,7 @@ export const CustomColor = styled.span`
   font-style: italic;
 `;
 export const Featured = styled.div`
+  position: relative;
   margin-top: 50px;
   width: 100%;
   display: flex;

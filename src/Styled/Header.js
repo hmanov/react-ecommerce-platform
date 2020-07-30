@@ -3,37 +3,51 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 export const HeaderTop = styled.div`
   max-width: 1200px;
-  width: 100%;
+  width: 95%;
   height: 50px;
-  margin-top: 20px;
+  margin: 20px 20px 0 20px;
   display: flex;
   justify-content: space-between;
-  border-bottom: 2px #eece1a solid;
-  z-index: 1;
+  border-bottom: 2px ${(props) => props.theme.primary} solid;
+  z-index: 6;
   @media (max-width: 600px) {
     justify-content: space-evenly;
   }
 `;
 
 export const SocialContainer = styled.div`
-  height: 50px;
+  position: relative;
 
+  height: 50px;
   justify-content: start;
   align-items: center;
+  z-index: 99;
 `;
-
+export const AuthContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: -150px;
+  margin-top: ${(props) => (props.isAuthMenuVisible ? '0px' : '-150px')};
+  transition: all 0.3s ease-out;
+  color: ${(props) => props.theme.dark};
+  padding-bottom: 10px;
+`;
 export const ProfileContainer = styled.div`
+  position: relative;
+  z-index: 3;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  padding-bottom: 10px;
 `;
 
 export const AwesomeIcon = styled(FontAwesomeIcon)`
   font-size: 25px;
   padding: 10px;
-  color: white;
-
+  color: ${(props) => props.theme.dark};
   transition: all 0.3s ease-in-out;
+  cursor: pointer;
+
   &:hover {
     color: ${(props) => props.hovercolor && props.hovercolor};
     padding: 5.5px;
@@ -42,8 +56,10 @@ export const AwesomeIcon = styled(FontAwesomeIcon)`
 `;
 
 export const NavContainer = styled.div`
+  position: relative;
+  z-index: 3;
   max-width: 1200px;
-  width: 100%;
+  width: 95%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -52,13 +68,15 @@ export const NavContainer = styled.div`
   }
 `;
 export const NavLinksContainer = styled.div`
-  z-index: 1;
+  position: relative;
+  z-index: 3;
+
   @media (max-width: 600px) {
     margin-top: 30px;
   }
 `;
 export const NavLogo = styled(Link)`
-  color: #eece1a;
+  color: ${(props) => props.theme.primary};
   z-index: 1;
   margin-block-start: 0;
   margin-block-end: 0;
@@ -71,15 +89,22 @@ export const NavLogo = styled(Link)`
   cursor: pointer;
 `;
 export const NavigationLink = styled(Link)`
+  position: relative;
+  z-index: 3;
   padding: 10px 5px;
   font-size: 20px;
   text-decoration: none;
   transition: all 0.2s ease-in;
-  color: white;
+  color: ${(props) => props.theme.dark};
 
   &:hover {
     color: ${(props) => props.theme.primary};
   }
+`;
+export const AuthLink = styled(NavigationLink)`
+  font-size: 20px;
+  font-weight: 600;
+  color: ${(props) => props.theme.primary};
 `;
 export const ShoppingCartLink = styled(Link)`
   display: flex;
