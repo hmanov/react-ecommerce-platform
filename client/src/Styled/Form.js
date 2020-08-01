@@ -76,7 +76,7 @@ export const FormInput = styled.input`
   width: 80%;
   padding: 15px;
   letter-spacing: 1px;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid ${(props) => props.theme.dark};
 
   &:focus {
@@ -94,7 +94,7 @@ export const FormButton = styled.button`
   font-size: 16px;
   letter-spacing: 2px;
   font-weight: 600;
-  border-radius: 10px;
+  border-radius: 5px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;

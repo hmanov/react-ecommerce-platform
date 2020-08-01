@@ -1,21 +1,26 @@
 import React, { createContext, useReducer } from 'react';
 
+const initialState = {
+  token: localStorage.getItem('token'),
+  isAuth: false,
+  user: [],
+};
+
 export const authReducer = (state, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case 'LOG_IN':
-      return { ...state, isAuth: !state.isAuth, user: payload };
+    case 'AUTH_USER':
+      return { ...state, isAuth: true, user: payload };
+    case 'SET_TOKEN':
+      return { ...state, token: payload };
+    case 'LOGOUT':
+      return initialState;
     default:
       return state;
   }
 };
 export const AuthContext = createContext();
-
-const initialState = {
-  isAuth: false,
-  user: [],
-};
 
 const AuthProvider = ({ children }) => {
   const [authState, authDispatch] = useReducer(authReducer, initialState);

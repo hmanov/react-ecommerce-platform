@@ -59,7 +59,7 @@ export const FeaturedCardAddToCart = styled.button`
   margin-top: 20px;
   width: 160px;
   height: 50px;
-  border-radius: 10px;
+  border-radius: 5px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;

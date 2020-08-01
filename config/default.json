@@ -1,0 +1,5 @@
+{
+  "URI": "mongodb+srv://react-ecommerce:MKO10TSW63AiQa5N@cluster0.8xhou.mongodb.net/<dbname>?retryWrites=true&w=majority",
+  "jwt": "secret",
+  "expiresIn": 36000
+}

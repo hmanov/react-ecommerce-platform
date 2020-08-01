@@ -2,6 +2,7 @@ import styled from 'styled-components';
 export const Slogan = styled.h1`
   color: ${(props) => props.theme.dark};
   font-size: 48px;
+  text-align: center;
 `;
 
 export const CustomColor = styled.span`

@@ -26,11 +26,14 @@ export const SocialContainer = styled.div`
 export const AuthContainer = styled.div`
   display: flex;
   align-items: center;
+  text-align: center;
   margin-top: -150px;
   margin-top: ${(props) => (props.isAuthMenuVisible ? '0px' : '-150px')};
   transition: all 0.3s ease-out;
   color: ${(props) => props.theme.dark};
   padding-bottom: 10px;
+  @media (max-width: 460px) {
+  }
 `;
 export const ProfileContainer = styled.div`
   position: relative;
@@ -52,6 +55,12 @@ export const AwesomeIcon = styled(FontAwesomeIcon)`
     color: ${(props) => props.hovercolor && props.hovercolor};
     padding: 5.5px;
     font-size: 35px;
+  }
+  @media (max-width: 460px) {
+    font-size: 20px;
+    &:hover {
+      font-size: 35px;
+    }
   }
 `;
 

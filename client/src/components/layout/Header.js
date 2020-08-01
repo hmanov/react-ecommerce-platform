@@ -10,12 +10,19 @@ import {
 } from '../../Styled/Header';
 import { faInstagram, faYoutube, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { ThemeContext } from 'styled-components';
 import AuthMenu from '../layout/AuthMenu';
+import { AuthContext } from '../../context/AuthProvider';
+import { logout } from '../../context/actions/authActions';
 
 const Header = () => {
   const [isAuthMenuVisible, setIsAuthMenuVisible] = useState(false);
+
+  const {
+    authState: { isAuth },
+    authDispatch,
+  } = useContext(AuthContext);
   const onBlurHandler = useCallback(
     (event) => {
       if (wrapperRef.current && !wrapperRef.current.contains(event.target) && isAuthMenuVisible) {
@@ -34,18 +41,19 @@ const Header = () => {
 
   const theme = useContext(ThemeContext);
   const wrapperRef = useRef(null);
-  const isLogged = false;
 
   let history = useHistory();
 
   const userHandler = () => {
-    if (isLogged) {
-      history.push('/login');
+    if (isAuth) {
+      history.push('/profile');
     } else {
       setIsAuthMenuVisible(!isAuthMenuVisible);
     }
   };
-
+  const logoutHnadler = () => {
+    logout(authDispatch);
+  };
   return (
     <HeaderTop onBlur={onBlurHandler} ref={wrapperRef}>
       <SocialContainer>
@@ -53,7 +61,7 @@ const Header = () => {
         <AwesomeIcon icon={faTwitter} hovercolor='#00acee' />
         <AwesomeIcon icon={faYoutube} hovercolor='#c4302b' />
       </SocialContainer>
-      {!isLogged && <AuthMenu isAuthMenuVisible={isAuthMenuVisible} />}
+      {!isAuth && <AuthMenu isAuthMenuVisible={isAuthMenuVisible} />}
       <ProfileContainer>
         <ShoppingCartLink to='/cart'>
           <AwesomeIcon icon={faShoppingCart} hovercolor={theme.primary} />
@@ -62,6 +70,7 @@ const Header = () => {
         </ShoppingCartLink>
 
         <AwesomeIcon icon={faUser} hovercolor={theme.primary} onClick={userHandler} />
+        {isAuth && <AwesomeIcon icon={faSignOutAlt} hovercolor={theme.primary} onClick={logoutHnadler} />}
       </ProfileContainer>
     </HeaderTop>
   );
