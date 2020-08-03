@@ -29,9 +29,9 @@ const dummyData = [
     imgUrl: 'https://p1.akcdn.net/full/574756884.ducky-one-2-rgb-tkl-dkon1787st.jpg',
     featured: true,
     totalRating: [
-      { user: 'aa', rating: 2 },
-      { user: 'aa', rating: 3 },
-      { user: 'aa', rating: 4 },
+      { user: 'aa', rating: 5 },
+      { user: 'aa', rating: 5 },
+      { user: 'aa', rating: 5 },
       { user: 'aa', rating: 5 },
     ],
   },
@@ -41,8 +41,8 @@ const dummyData = [
     sku: 'DKON2061ST-_USPDAZT1',
     imgUrl: 'https://p1.akcdn.net/full/574756884.ducky-one-2-rgb-tkl-dkon1787st.jpg',
     totalRating: [
-      { user: 'aa', rating: 2 },
-      { user: 'aa', rating: 3 },
+      { user: 'aa', rating: 4 },
+      { user: 'aa', rating: 4 },
       { user: 'aa', rating: 4 },
       { user: 'aa', rating: 5 },
     ],
@@ -55,8 +55,8 @@ const dummyData = [
     totalRating: [
       { user: 'aa', rating: 2 },
       { user: 'aa', rating: 3 },
-      { user: 'aa', rating: 4 },
-      { user: 'aa', rating: 5 },
+      { user: 'aa', rating: 3 },
+      { user: 'aa', rating: 3 },
     ],
   },
   {
@@ -90,6 +90,7 @@ app.get('/api', (req, res) => {
 });
 
 app.use('/api/auth', require('./routes/auth'));
+app.use('/api/admin', require('./routes/admin'));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

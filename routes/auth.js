@@ -50,6 +50,7 @@ router.post(
       const payload = {
         user: {
           id: user.id,
+          is,
         },
       };
       jwt.sign(payload, config.get('jwt'), { expiresIn: config.get('expiresIn') }, (err, token) => {
@@ -93,6 +94,7 @@ router.post(
       const payload = {
         user: {
           id: user.id,
+          isAdmin: user.isAdmin,
         },
       };
       jwt.sign(payload, config.get('jwt'), { expiresIn: config.get('expiresIn') }, (err, token) => {

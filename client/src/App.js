@@ -8,7 +8,7 @@ import About from './components/pages/About';
 import Shop from './components/pages/Shop';
 import Contact from './components/pages/Contact';
 import Register from './components/pages/Register';
-
+import Admin from './components/pages/Admin';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './Styled/theme';
 
@@ -31,6 +31,7 @@ const App = () => (
                 <Route exact path='/contact' component={Contact} />
                 <Route exact path='/about' component={About} />
                 <Route exact path='/register' component={Register} />
+                <Route exact path='/admin' component={Admin} />
               </Switch>
             </Container>
           </ContainerBody>

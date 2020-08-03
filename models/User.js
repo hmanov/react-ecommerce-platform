@@ -5,7 +5,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  Name: {
+  lastName: {
     type: String,
     required: true,
   },
@@ -22,6 +22,10 @@ const UserSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now,
+  },
+  isAdmin: {
+    type: Boolean,
+    default: false,
   },
 });
 module.exports = User = mongoose.model('user', UserSchema, 'user');

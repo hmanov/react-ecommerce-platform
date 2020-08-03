@@ -73,12 +73,14 @@ export const FormTitle = styled.h2`
 `;
 export const FormInput = styled.input`
   box-sizing: border-box;
-  width: 80%;
+
   padding: 15px;
   letter-spacing: 1px;
   border-radius: 5px;
   border: 1px solid ${(props) => props.theme.dark};
-
+  &:not([type='radio']) {
+    width: 80%;
+  }
   &:focus {
     outline: ${(props) => props.theme.primary} auto 1px;
   }

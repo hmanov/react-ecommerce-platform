@@ -5,6 +5,7 @@ const getUser = async ({ token }, dispatch) => {
   localStorage.setItem('token', token);
   try {
     const res = await axios.get('api/auth', { headers: { 'x-auth-token': token } });
+    console.log(res.data);
     return res.data;
   } catch (error) {
     console.log(error.response);
