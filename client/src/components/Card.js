@@ -11,16 +11,14 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import RatingBar from './RatingBar';
 
-const Card = ({ data: { name, price, sku, imgUrl, totalRating }, to }) => {
-  const rate = (e) => {
-    console.log(e);
-  };
+const Card = ({ data: { productName, price, sku, imageURL, totalRating }, to }) => {
+  const rate = (e) => {};
   return (
     <FeaturedCard>
       <Link to={to} style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <FeaturedCardPrice>${price}</FeaturedCardPrice>
-        <FeaturedCardImg src={imgUrl} />
-        <FeaturedCardTitle>{name}</FeaturedCardTitle>
+        <FeaturedCardImg src={imageURL} />
+        <FeaturedCardTitle>{productName}</FeaturedCardTitle>
       </Link>
       <RatingBar rate={rate} rating={totalRating} />
       <FeaturedCardAddToCart>

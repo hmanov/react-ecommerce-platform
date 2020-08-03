@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AuthContext } from '../context/AuthProvider';
 const RatingBar = ({ rate, rating }) => {
   const calculatedRating = useCallback(() => {
-    return rating.map((e) => e.rating).reduce((acc, val) => acc + val, 0) / rating.length;
+    return rating.length > 0 ? rating.map((e) => e.rating).reduce((acc, val) => acc + val, 0) / rating.length : 0;
   }, [rating]);
   const {
     authState: { isAuth },
@@ -23,9 +23,14 @@ const RatingBar = ({ rate, rating }) => {
         emptySymbol={<FontAwesomeIcon style={{ color: theme.primary }} icon={faStar} />}
         fullSymbol={<FontAwesomeIcon style={{ color: theme.primary }} icon={fullStar} />}
       />
-      <>
-        {' - '} {calculatedRating()} on {rating.length}
-      </>
+      {'  -  '}
+      {calculatedRating() ? (
+        <span>
+          {calculatedRating()} on {rating.length}
+        </span>
+      ) : (
+        <span> Not rated yet</span>
+      )}
     </div>
   );
 };

@@ -7,14 +7,15 @@ export const ProductsReducer = (state, action) => {
 
   switch (type) {
     case 'GET_PRODUCTS':
-      return { ...state, featured: payload, isLoading: false };
+      return { ...state, products: payload, isLoading: false };
+    case 'ADD_PRODUCT':
+      return { ...state, products: state.products.push(payload), isLoading: false };
     default:
       return state;
   }
 };
 const initialState = {
   isLoading: true,
-  featured: [],
   products: [],
 };
 const ProductProvider = ({ children }) => {

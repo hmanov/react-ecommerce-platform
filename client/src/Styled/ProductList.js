@@ -7,7 +7,7 @@ export const ProductListContainer = styled.div`
   flex-direction: column;
 `;
 
-export const ProductItem = styled.div`
+export const ProductItemContainer = styled.div`
   display: flex;
   justify-content: space-between;
 `;

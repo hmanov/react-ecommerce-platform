@@ -1,19 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { FormContainer, Form, FormInput, FormTitle, FormButton } from '../Styled/Form';
+import { createProduct } from '../context/actions/productsActions';
+import { ProductsContext } from '../context/ProductProvider';
+import { AuthContext } from '../context/AuthProvider';
 
 const ProductForm = ({ editData }) => {
+  const { productDispach } = useContext(ProductsContext);
+  const { authState } = useContext(AuthContext);
   const initialFormData = {
     productName: '',
     price: 0,
     imageURL: '',
     categories: '',
     SKU: '',
-    availability: '',
+    availability: 'true',
   };
   const [formData, setFormData] = useState(initialFormData);
   useEffect(() => {
     setFormData(editData);
-  });
+  }, [editData]);
 
   const { productName, price, imageURL, categories, SKU } = formData;
 
@@ -23,8 +28,8 @@ const ProductForm = ({ editData }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    createProduct(productDispach, formData, authState);
     clearFormData();
-    console.log(formData);
   };
   return (
     <FormContainer getEditData={setFormData}>
@@ -52,15 +57,16 @@ const ProductForm = ({ editData }) => {
             type='radio'
             placeholder='availability'
             name='availability'
-            value={true}
+            value='true'
             onChange={onchangehandler}
+            checked={true}
           />
           <label htmlFor='notAvailable'>In stock</label>
           <FormInput
             type='radio'
             placeholder='availability'
             name='availability'
-            value={false}
+            value='false'
             onChange={onchangehandler}
           />
           <label htmlFor='Available'>Out of stock</label>
