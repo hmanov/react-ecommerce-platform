@@ -3,22 +3,12 @@ import { ContainerCenter } from '../../Styled/Container';
 import { Slogan, CustomColor, Featured } from '../../Styled/HomeStyled';
 import Card from '../Card';
 import Loading from '../Loading';
-
-import { getProducts } from '../../context/actions/productsActions';
-import { ProductsContext } from '../../context/ProductProvider';
-
+import { AuthContext } from '../../context/AuthProvider';
 const Home = () => {
-  const {
-    productState: { isLoading, products },
-    productDispach,
-  } = useContext(ProductsContext);
+  const { authState, authDispatch } = useContext(AuthContext);
 
-  useEffect(() => {
-    const getData = async () => {
-      getProducts(productDispach);
-    };
-    getData();
-  }, [productDispach]);
+  const isLoading = false;
+  const products = [];
   return (
     <ContainerCenter>
       <Slogan>

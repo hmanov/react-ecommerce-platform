@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { FormContainer, Form, FormInput, FormTitle, FormButton } from '../Styled/Form';
-import { createProduct } from '../context/actions/productsActions';
+import { createProduct, deleteProduct } from '../context/actions/productsActions';
 import { ProductsContext } from '../context/ProductProvider';
 import { AuthContext } from '../context/AuthProvider';
 
 const ProductForm = ({ editData }) => {
-  const { productDispach } = useContext(ProductsContext);
+  const { productDispatch } = useContext(ProductsContext);
   const { authState } = useContext(AuthContext);
   const initialFormData = {
     productName: '',
@@ -13,28 +13,41 @@ const ProductForm = ({ editData }) => {
     imageURL: '',
     categories: '',
     SKU: '',
-    availability: 'true',
+    availability: 1,
   };
+
   const [formData, setFormData] = useState(initialFormData);
+
   useEffect(() => {
-    setFormData(editData);
+    if (editData) {
+      const { productName, price, imageURL, categories, SKU, availability } = editData;
+      setFormData({ productName, price, imageURL, categories, SKU, availability });
+    }
   }, [editData]);
 
-  const { productName, price, imageURL, categories, SKU } = formData;
-
+  const { productName, price, imageURL, categories, SKU, availability } = formData;
   const clearFormData = () => setFormData(initialFormData);
-
-  const onchangehandler = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+  const onchangehandler = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
-    createProduct(productDispach, formData, authState);
+    createProduct(formData, authState, productDispatch);
     clearFormData();
+  };
+  const editHandler = ({ _id }, data, e) => {
+    e.preventDefault();
+    console.log(formData);
+    deleteProduct(productDispatch, _id, authState);
   };
   return (
     <FormContainer getEditData={setFormData}>
-      <Form style={{ maxWidth: '400px' }} onSubmit={submitHandler}>
-        <FormTitle>Add new Product </FormTitle>
+      <Form
+        style={{ maxWidth: '400px' }}
+        onSubmit={editData ? editHandler.bind(undefined, editData, formData) : submitHandler}
+      >
+        <FormTitle>{!editData ? 'Add new Product' : 'Edit Product'} </FormTitle>
         <FormInput
           type='text'
           placeholder='Product Name'
@@ -57,20 +70,15 @@ const ProductForm = ({ editData }) => {
             type='radio'
             placeholder='availability'
             name='availability'
-            value='true'
+            value={1}
+            checked
             onChange={onchangehandler}
-            checked={true}
           />
           <label htmlFor='notAvailable'>In stock</label>
-          <FormInput
-            type='radio'
-            placeholder='availability'
-            name='availability'
-            value='false'
-            onChange={onchangehandler}
-          />
+          <FormInput type='radio' placeholder='availability' name='availability' value={0} onChange={onchangehandler} />
           <label htmlFor='Available'>Out of stock</label>
         </div>
+
         <FormButton>submit</FormButton>
       </Form>
     </FormContainer>

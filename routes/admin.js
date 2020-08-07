@@ -19,9 +19,8 @@ router.post(
   ],
   async (req, res) => {
     const errors = validationResult(req);
-    console.log(req.body.availability);
+
     if (!errors.isEmpty()) {
-      console.log(errors);
       return res.status(400).json({ errors: errors.array() });
     }
     const { productName, price, imageURL, categories, SKU, availability } = req.body;
@@ -37,5 +36,12 @@ router.post(
     await product.save();
   }
 );
-
+router.delete('/', auth, admin, async (req, res) => {
+  console.log(req.body);
+  try {
+    await Product.findByIdAndRemove(req.body.data);
+  } catch (error) {
+    console.log(error);
+  }
+});
 module.exports = router;

@@ -1,14 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { ProductListContainer } from '../Styled/ProductList';
 import { ProductsContext } from '../context/ProductProvider';
 import Productitem from './ProductItem';
-const ProductList = () => {
+const ProductList = ({ getEditData }) => {
   const { productState } = useContext(ProductsContext);
-  console.log(productState);
+  console.log(productState.products);
   return (
     <ProductListContainer>
       {productState.products.map((e, i) => (
-        <Productitem productData={e} key={i} />
+        <Productitem productData={e} key={i} getEditData={getEditData} />
       ))}
     </ProductListContainer>
   );

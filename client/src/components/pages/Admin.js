@@ -1,27 +1,23 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import ProductForm from '../ProductForm';
 import { ProductsContext } from '../../context/ProductProvider';
 
 import { AdminContainer } from '../../Styled/AdminStyled';
 import ProductList from '../ProductList';
+import { getProducts } from '../../context/actions/productsActions';
 
 const Admin = () => {
-  const { productState } = useContext(ProductsContext);
+  const { productDispatch } = useContext(ProductsContext);
+  const [getEditData, setGetEditData] = useState();
 
-  const data = {
-    productName: '',
-    price: 100,
-    imageURL: '',
-    categories: '',
-    SKU: '',
-    availability: '',
-  };
-  const [updateFormData, setUpdateFormData] = useState(data);
-
+  useEffect(() => {
+    getProducts(productDispatch);
+    console.log('here');
+  }, [getProducts]);
   return (
     <AdminContainer>
-      <ProductList />
-      <ProductForm editData={updateFormData} />
+      <ProductList getEditData={(e) => setGetEditData(e)} />
+      <ProductForm editData={getEditData} style={{ width: '500px' }} />
     </AdminContainer>
   );
 };

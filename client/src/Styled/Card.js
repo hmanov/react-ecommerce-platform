@@ -48,7 +48,7 @@ export const FeaturedCardTitle = styled.h3`
   font-size: 14px;
   margin-block-start: 0;
   margin-block-end: 0;
-  margin-top: 80px;
+  margin-top: 20px;
   text-decoration: none;
   text-align: center;
 `;

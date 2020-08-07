@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 export const FormContainer = styled.div`
-  max-width: 1200px;
-  width: 100%;
+  max-width: 800px;
+  width: max-content;
   height: 100%;
   margin-top: 100px;
   display: flex;
@@ -20,7 +20,7 @@ export const Form = styled.form`
   background-color: white;
   padding: 30px;
   max-width: 400px;
-  width: 100%;
+  width: 400px;
   max-height: 600px;
   height: 500px;
 
@@ -109,5 +109,8 @@ export const FormButton = styled.button`
   transition: all 0.3s ease-in-out;
   &:hover {
     color: red;
+  }
+  &:disabled {
+    color: ${(props) => props.theme.dark}!important;
   }
 `;

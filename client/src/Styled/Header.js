@@ -46,14 +46,14 @@ export const ProfileContainer = styled.div`
 
 export const AwesomeIcon = styled(FontAwesomeIcon)`
   font-size: 25px;
-  padding: 10px;
+  margin: 10px;
   color: ${(props) => props.theme.dark};
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 
   &:hover {
     color: ${(props) => props.hovercolor && props.hovercolor};
-    padding: 5.5px;
+    margin: 5.5px;
     font-size: 35px;
   }
   @media (max-width: 460px) {

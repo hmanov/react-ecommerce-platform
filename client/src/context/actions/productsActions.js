@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 export const getProducts = async (dispatch) => {
   try {
     const res = await axios.get('/api');
@@ -8,16 +9,27 @@ export const getProducts = async (dispatch) => {
   }
 };
 
-export const createProduct = async (dispatch, data, user) => {
-  console.log(data);
+export const createProduct = async (data, user, dispatch) => {
+  const res = await axios.post('api/admin', data, {
+    headers: {
+      'x-auth-token': user.token,
+    },
+  });
+
+  dispatch({ type: 'ADD_PRODUCT', payload: res.data });
+};
+
+export const deleteProduct = async (dispatch, data, user) => {
   try {
-    const res = await axios.post('api/admin', data, {
+    await axios.delete('api/admin', {
       headers: {
         'x-auth-token': user.token,
       },
+      data: { data },
     });
-    dispatch({ type: 'ADD_PRODUCT', payload: res.data });
+
+    dispatch({ type: 'DELETE_PRODUCT', payload: data });
   } catch (error) {
-    console.log(error.errors);
+    console.log(error.response);
   }
 };

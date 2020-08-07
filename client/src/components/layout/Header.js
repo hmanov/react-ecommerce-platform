@@ -14,8 +14,7 @@ import { faShoppingCart, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 import { ThemeContext } from 'styled-components';
 import AuthMenu from '../layout/AuthMenu';
 import { AuthContext } from '../../context/AuthProvider';
-import { logout } from '../../context/actions/authActions';
-
+import { logout } from '../../context/actions/authTypes';
 const Header = () => {
   const [isAuthMenuVisible, setIsAuthMenuVisible] = useState(false);
 
@@ -52,7 +51,7 @@ const Header = () => {
     }
   };
   const logoutHnadler = () => {
-    logout(authDispatch);
+    authDispatch(logout);
   };
   return (
     <HeaderTop onBlur={onBlurHandler} ref={wrapperRef}>

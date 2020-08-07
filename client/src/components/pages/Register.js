@@ -1,10 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Form, FormInput, FormTitle, FormButton, FormContainer } from '../../Styled/Form';
-import { register, login } from '../../context/actions/authActions';
-
 import { AuthContext } from '../../context/AuthProvider';
+import { login, register, loginFailure } from '../../context/actions/authTypes';
+import authService from '../../context/actions/authActions';
 
 const Register = ({ history }) => {
+  const { authState, authDispatch } = useContext(AuthContext);
+
   useEffect(() => {
     if (authState.isAuth) {
       history.push('/');
@@ -25,16 +27,15 @@ const Register = ({ history }) => {
   });
 
   const { email, firstName, lastName, password, repeatPassword } = registerFormData;
-  const { authState, authDispatch } = useContext(AuthContext);
   const registerSubmitHandler = (e) => {
+    authDispatch(register(registerFormData));
     e.preventDefault();
-
-    register(authDispatch, registerFormData);
   };
-  const loginSubmitHandler = (e) => {
+  const loginSubmitHandler = async (e) => {
     e.preventDefault();
 
-    login(authDispatch, loginFormData);
+    const res = await authService.login(loginFormData);
+    authDispatch(login(res));
   };
 
   const registerOnChangeHandler = (e) => {

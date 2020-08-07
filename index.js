@@ -13,7 +13,6 @@ app.use(urlencoded({ extended: false }));
 
 app.get('/api', async (req, res) => {
   const data = await Product.find().lean();
-  console.log(data);
   res.json(data);
 });
 
