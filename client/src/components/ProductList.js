@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { ProductListContainer } from '../Styled/ProductList';
-import { ProductsContext } from '../context/ProductProvider';
+import { ProductContext } from '../context/ProductProvider';
 import Productitem from './ProductItem';
 const ProductList = ({ getEditData }) => {
-  const { productState } = useContext(ProductsContext);
+  const { productState } = useContext(ProductContext);
   console.log(productState.products);
   return (
     <ProductListContainer>

@@ -1,19 +1,20 @@
 import React, { useContext, useState, useEffect } from 'react';
 import ProductForm from '../ProductForm';
-import { ProductsContext } from '../../context/ProductProvider';
+import { ProductContext } from '../../context/ProductProvider';
 
 import { AdminContainer } from '../../Styled/AdminStyled';
 import ProductList from '../ProductList';
-import { getProducts } from '../../context/actions/productsActions';
+import productService from '../../context/actions/productsActions';
+import { getProducts } from '../../context/actions/productTypes';
 
 const Admin = () => {
-  const { productDispatch } = useContext(ProductsContext);
+  const { productDispatch } = useContext(ProductContext);
   const [getEditData, setGetEditData] = useState();
 
-  useEffect(() => {
-    getProducts(productDispatch);
-    console.log('here');
-  }, [getProducts]);
+  useEffect(async () => {
+    const res = await productService.getProducts();
+    productDispatch(res);
+  }, [productService.getProducts]);
   return (
     <AdminContainer>
       <ProductList getEditData={(e) => setGetEditData(e)} />

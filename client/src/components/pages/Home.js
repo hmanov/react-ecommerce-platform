@@ -3,12 +3,17 @@ import { ContainerCenter } from '../../Styled/Container';
 import { Slogan, CustomColor, Featured } from '../../Styled/HomeStyled';
 import Card from '../Card';
 import Loading from '../Loading';
-import { AuthContext } from '../../context/AuthProvider';
+import { ProductContext } from '../../context/ProductProvider';
+import {getProducts} from '../../context/actions/productTypes'
+import {}
 const Home = () => {
-  const { authState, authDispatch } = useContext(AuthContext);
-
-  const isLoading = false;
-  const products = [];
+  const {
+    productState: { isLoading, products },
+    productDispatch,
+  } = useContext(ProductContext);
+useEffect(()=> {
+ 
+})
   return (
     <ContainerCenter>
       <Slogan>

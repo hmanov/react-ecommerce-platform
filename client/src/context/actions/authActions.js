@@ -2,10 +2,11 @@ import axios from 'axios';
 const authService = {
   getUser: async ({ token }) => {
     try {
-      // localStorage.setItem('token', token);
-      return axios.get('api/auth', { headers: { 'x-auth-token': token } });
+      localStorage.setItem('token', token);
+      return await axios.get('api/auth', { headers: { 'x-auth-token': token } });
     } catch (error) {
-      return error.response.data.errors;
+      localStorage.clear();
+      return error.response;
     }
   },
   register: async (data) => {
@@ -13,7 +14,7 @@ const authService = {
       const res = await axios.post('api/auth/register', data);
       return authService.getUser(res.data);
     } catch (error) {
-      console.log(error.response);
+      return error.response;
     }
   },
   login: async (data) => {

@@ -1,23 +1,29 @@
-import React, { createContext, useReducer, useMemo } from 'react';
-import { actionTypes, login, logout, register, loginFailure, logoutFailure } from './actions/authTypes';
+import React, { createContext, useReducer } from 'react';
+import { actionTypes } from './actions/authTypes';
 
+const getToken = () => localStorage.getItem('token');
 const initialState = {
-  token: localStorage.getItem('token'),
+  token: getToken(),
   isAuth: !!localStorage.getItem('token'),
   user: {},
   authErrors: [],
 };
 const actionMap = {
-  [actionTypes.Login]: (state, user) => ({ ...state, isAuth: true, user, token: localStorage.getItem('token') }),
-  [actionTypes.Logout]: (state) => ({ ...state, isAuth: false, token: null, user: {} }),
-  [actionTypes.Register]: (state, user) => ({ ...state, isAuth: true, user, token: localStorage.getItem('token') }),
-  [actionTypes.LoginFailure]: (state, err) => ({
+  [actionTypes.LoginSuccess]: (state, data) => ({
+    ...state,
+    isAuth: true,
+    user: data,
+    authErrors: [],
+    token: getToken(),
+  }),
+  [actionTypes.LoginFailure]: (state, data) => ({
     ...state,
     isAuth: false,
-    user: null,
-    token: null,
-    authErrors: err,
+    user: {},
+    authErrors: data.errors,
   }),
+  [actionTypes.Logout]: (state) => ({ ...state, isAuth: false, token: null, user: {} }),
+  [actionTypes.ClearErrors]: (state) => ({ ...state, authErrors: [] }),
 };
 
 export const authReducer = (state, action) => {

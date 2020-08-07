@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { FormContainer, Form, FormInput, FormTitle, FormButton } from '../Styled/Form';
-import { createProduct, deleteProduct } from '../context/actions/productsActions';
-import { ProductsContext } from '../context/ProductProvider';
+import productService from '../context/actions/productsActions';
+import { ProductContext } from '../context/ProductProvider';
 import { AuthContext } from '../context/AuthProvider';
 
 const ProductForm = ({ editData }) => {
-  const { productDispatch } = useContext(ProductsContext);
+  const { productDispatch } = useContext(ProductContext);
   const { authState } = useContext(AuthContext);
   const initialFormData = {
     productName: '',

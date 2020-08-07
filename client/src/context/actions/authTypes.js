@@ -7,11 +7,13 @@ export const actionTypes = {
   Logout: Symbol('[AUTH] Logout'),
   LogoutSuccess: Symbol('[AUTH] Logout Success'),
   LogoutFailure: Symbol('[AUTH] Logout Failure'),
+  ClearErrors: Symbol('[AUTH] Claer Errors'),
 };
 
-export const LoginSuccess = (data) => ({ type: actionTypes.Login, payload: data });
+export const loginSuccess = (data) => ({ type: actionTypes.LoginSuccess, payload: data });
 export const loginFailure = (data) => ({ type: actionTypes.LoginFailure, payload: data });
-export const login = ({ data, status }) => (status >= 400 ? loginFailure(data) : LoginSuccess(data));
+export const login = ({ data, status }) => (status >= 400 ? loginFailure(data) : loginSuccess(data));
+
+export const register = ({ data, status }) => (status >= 400 ? loginFailure(data) : loginSuccess(data));
+export const clearErrors = () => ({ type: actionTypes.ClearErrors });
 export const logout = (data) => ({ type: actionTypes.Logout, payload: {} });
-export const logoutFailure = (data) => ({ type: actionTypes.Logout, payload: {} });
-export const register = (data) => ({ type: actionTypes.Register, payload: data });

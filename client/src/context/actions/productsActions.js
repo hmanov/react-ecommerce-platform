@@ -1,35 +1,36 @@
 import axios from 'axios';
+const productService = {
+  getProducts: async () => {
+    try {
+      return await axios.get('/api');
+    } catch (error) {
+      return error.response;
+    }
+  },
 
-export const getProducts = async (dispatch) => {
-  try {
-    const res = await axios.get('/api');
-    dispatch({ type: 'GET_PRODUCTS', payload: res.data });
-  } catch (error) {
-    console.error(error);
-  }
+  createProduct: async (data, user) => {
+    try {
+      const res = await axios.post('api/admin', data, {
+        headers: {
+          'x-auth-token': user.token,
+        },
+      });
+    } catch (error) {
+      return error.response;
+    }
+  },
+
+  deleteProduct: async (data, user) => {
+    try {
+      return await axios.delete('api/admin', {
+        headers: {
+          'x-auth-token': user.token,
+        },
+        data: { data },
+      });
+    } catch (error) {
+      return error.response;
+    }
+  },
 };
-
-export const createProduct = async (data, user, dispatch) => {
-  const res = await axios.post('api/admin', data, {
-    headers: {
-      'x-auth-token': user.token,
-    },
-  });
-
-  dispatch({ type: 'ADD_PRODUCT', payload: res.data });
-};
-
-export const deleteProduct = async (dispatch, data, user) => {
-  try {
-    await axios.delete('api/admin', {
-      headers: {
-        'x-auth-token': user.token,
-      },
-      data: { data },
-    });
-
-    dispatch({ type: 'DELETE_PRODUCT', payload: data });
-  } catch (error) {
-    console.log(error.response);
-  }
-};
+export default productService;

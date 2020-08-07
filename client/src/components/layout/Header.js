@@ -15,6 +15,7 @@ import { ThemeContext } from 'styled-components';
 import AuthMenu from '../layout/AuthMenu';
 import { AuthContext } from '../../context/AuthProvider';
 import { logout } from '../../context/actions/authTypes';
+import authService from '../../context/actions/authActions';
 const Header = () => {
   const [isAuthMenuVisible, setIsAuthMenuVisible] = useState(false);
 
@@ -51,7 +52,8 @@ const Header = () => {
     }
   };
   const logoutHnadler = () => {
-    authDispatch(logout);
+    authService.logout();
+    authDispatch(logout());
   };
   return (
     <HeaderTop onBlur={onBlurHandler} ref={wrapperRef}>
