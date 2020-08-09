@@ -6,10 +6,9 @@ import { AdminContainer } from '../../Styled/AdminStyled';
 import ProductList from '../ProductList';
 import productService from '../../context/actions/productsActions';
 import { getProducts } from '../../context/actions/productTypes';
-
+import Filter from '../Filter';
 const Admin = () => {
   const { productDispatch } = useContext(ProductContext);
-  const [getEditData, setGetEditData] = useState();
 
   useEffect(() => {
     const populate = async () => {
@@ -20,8 +19,11 @@ const Admin = () => {
   }, [productDispatch]);
   return (
     <AdminContainer>
-      <ProductList getEditData={(e) => setGetEditData(e)} />
-      <ProductForm editData={getEditData} style={{ width: '500px' }} />
+      <div style={{ maxWidth: '600px', width: '100%' }}>
+        <Filter />
+        <ProductList />
+      </div>
+      <ProductForm style={{ width: '500px' }} />
     </AdminContainer>
   );
 };

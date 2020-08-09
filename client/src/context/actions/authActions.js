@@ -3,7 +3,10 @@ const authService = {
   getUser: async ({ token }) => {
     try {
       localStorage.setItem('token', token);
-      return await axios.get('api/auth', { headers: { 'x-auth-token': token } });
+      const user = await axios.get('api/auth', { headers: { 'x-auth-token': token } });
+      console.log(user.data);
+      localStorage.setItem('user', JSON.stringify(user.data));
+      return user;
     } catch (error) {
       localStorage.clear();
       return error.response;

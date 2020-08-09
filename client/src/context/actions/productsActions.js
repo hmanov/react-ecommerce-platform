@@ -49,5 +49,20 @@ const productService = {
       return error.response;
     }
   },
+  rateProduct: async ({ token }, productId, rating) => {
+    try {
+      return await axios.post(
+        'api/product/rate',
+        { productId, rating },
+        {
+          headers: {
+            'x-auth-token': token,
+          },
+        }
+      );
+    } catch (error) {
+      return error.response;
+    }
+  },
 };
 export default productService;

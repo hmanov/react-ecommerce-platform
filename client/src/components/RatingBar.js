@@ -5,28 +5,44 @@ import { ThemeContext } from 'styled-components';
 import { faStar as fullStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AuthContext } from '../context/AuthProvider';
-const RatingBar = ({ rate, rating }) => {
+import { ProductContext } from '../context/ProductProvider';
+import productService from '../context/actions/productsActions';
+import { rateProduct } from '../context/actions/productTypes';
+
+const RatingBar = ({ totalRating, productId }) => {
   const calculatedRating = useCallback(() => {
-    return rating.length > 0 ? rating.map((e) => e.rating).reduce((acc, val) => acc + val, 0) / rating.length : 0;
-  }, [rating]);
+    return totalRating.length > 0
+      ? totalRating.map((e) => e.rating).reduce((acc, val) => acc + val, 0) / totalRating.length
+      : 0;
+  }, [totalRating]);
+
   const {
     authState: { isAuth },
+    authState,
   } = useContext(AuthContext);
+
+  const { productDispatch } = useContext(ProductContext);
   const theme = useContext(ThemeContext);
+  const rateHandler = async (rate) => {
+    const res = await productService.rateProduct(authState, productId, rate);
+    console.log(res);
+    productDispatch(rateProduct({ ...res, productId }));
+  };
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: 'flex', justifyContent: 'space-evenly', width: '80%' }}>
       <Rating
-        onClick={(e) => rate(e)}
+        onClick={rateHandler}
         fractions='2'
         readonly={!isAuth}
         initialRating={calculatedRating()}
         emptySymbol={<FontAwesomeIcon style={{ color: theme.primary }} icon={faStar} />}
         fullSymbol={<FontAwesomeIcon style={{ color: theme.primary }} icon={fullStar} />}
       />
-      {'  -  '}
+
       {calculatedRating() ? (
         <span>
-          {calculatedRating()} on {rating.length}
+          {calculatedRating()}
+          {' on '} {totalRating.length}
         </span>
       ) : (
         <span> Not rated yet</span>

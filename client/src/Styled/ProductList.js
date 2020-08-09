@@ -10,4 +10,5 @@ export const ProductListContainer = styled.div`
 export const ProductItemContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;

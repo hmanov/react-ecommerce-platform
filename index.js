@@ -18,6 +18,7 @@ app.get('/api', async (req, res) => {
 
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/admin', require('./routes/admin'));
+app.use('/api/product', require('./routes/product'));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

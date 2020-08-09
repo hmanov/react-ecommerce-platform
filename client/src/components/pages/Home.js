@@ -21,9 +21,11 @@ const Home = () => {
   return (
     <ContainerCenter>
       <Slogan>
-        You must <CustomColor> Feel</CustomColor> the <CustomColor>Click!</CustomColor>
+        Check out our <CustomColor> Featurd</CustomColor> <CustomColor>Keyboards</CustomColor>
       </Slogan>
-      <Featured>{!isLoading ? products.map((e, i) => <Card data={e} key={i} to='/' />) : <Loading />}</Featured>
+      <Featured>
+        {!isLoading ? products.slice(0, 3).map((e, i) => <Card data={e} key={i} to='/' />) : <Loading />}
+      </Featured>
     </ContainerCenter>
   );
 };

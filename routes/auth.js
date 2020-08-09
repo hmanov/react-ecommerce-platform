@@ -50,7 +50,7 @@ router.post(
       const payload = {
         user: {
           id: user.id,
-          is,
+          isAdmin: false,
         },
       };
       jwt.sign(payload, config.get('jwt'), { expiresIn: config.get('expiresIn') }, (err, token) => {

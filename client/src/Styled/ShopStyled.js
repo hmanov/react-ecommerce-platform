@@ -8,15 +8,3 @@ export const ShopTitle = styled.h2`
   margin-top: 60px;
   margin-bottom: 60px;
 `;
-
-export const Filter = styled.select`
-  max-width: 400px;
-  width: 100%;
-  height: 30px;
-  border-radius: 5px;
-  border: 2px solid ${(props) => props.theme.primary};
-  &:focus {
-    outline: none;
-    border: 3px solid ${(props) => props.theme.primary};
-  }
-`;

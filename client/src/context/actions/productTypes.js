@@ -14,6 +14,9 @@ export const actionTypes = {
 
   UpdateProductSuccess: Symbol('[PROD] Update Product Success'),
   UpdateProductFailure: Symbol('[PROD] Update Product Failure'),
+
+  RateSuccess: Symbol('[PROD] Rate Product Success'),
+  RateFailure: Symbol('[PROD] Rate Product Failure'),
 };
 
 const getProductsSuccess = (data) => ({ type: actionTypes.GetAllPRoductsSuccess, payload: data });
@@ -37,3 +40,8 @@ const updateProductSuccess = (data) => ({ type: actionTypes.UpdateProductSuccess
 const updateProductFailure = (data) => ({ type: actionTypes.UpdateProductFailure, payload: data });
 export const updateProduct = ({ status, data }) =>
   status >= 400 ? updateProductFailure(data) : updateProductSuccess(data);
+
+const rateFailure = (data) => ({ type: actionTypes.rateFailure, payload: data });
+const rateSuccess = (data) => ({ type: actionTypes.RateSuccess, payload: data });
+export const rateProduct = ({ status, data, productId }) =>
+  status >= 400 ? rateFailure(data) : rateSuccess({ data, productId });

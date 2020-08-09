@@ -24,6 +24,10 @@ const actionMap = {
     ...state,
     products: state.products.map((e) => (e._id === data._id ? data : e)),
   }),
+  [actionTypes.RateSuccess]: (state, data) => ({
+    ...state,
+    products: state.products.map((e) => (e._id === data.productId ? { ...e, totalRating: data.data } : e)),
+  }),
 };
 export const ProductContext = createContext();
 

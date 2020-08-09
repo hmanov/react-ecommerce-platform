@@ -7,6 +7,7 @@ import { AuthContext } from '../context/AuthProvider';
 import { ProductContext } from '../context/ProductProvider';
 import { deleteProduct, setEditData } from '../context/actions/productTypes';
 import productService from '../context/actions/productsActions';
+import { NavigationLink } from '../Styled/Header';
 const ProductItem = ({ productData: { productName, price, _id }, productData }) => {
   const { authState } = useContext(AuthContext);
   const { productDispatch } = useContext(ProductContext);
@@ -16,13 +17,14 @@ const ProductItem = ({ productData: { productName, price, _id }, productData }) 
   };
   return (
     <ProductItemContainer>
-      <div>
-        <h4>
-          <strong>product: </strong>
+      <NavigationLink to={{ pathname: '/details', productData }}>
+        <span>
+          <strong>Product: </strong>
           {productName}
-        </h4>
-        <span>{price}</span>
-      </div>
+        </span>{' '}
+        <strong>Price: </strong>
+        <span>${price}</span>
+      </NavigationLink>
       <div>
         <AwesomeIcon
           data-tip

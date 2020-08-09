@@ -43,8 +43,6 @@ const ProductForm = () => {
   };
   const editHandler = async ({ _id }, data, e) => {
     e.preventDefault();
-
-    console.log(data);
     const res = await productService.editProduct(_id, data, authState);
     productDispatch(updateProduct(res));
     productDispatch(clearEditData());
@@ -55,7 +53,7 @@ const ProductForm = () => {
     clearFormData();
   };
   return (
-    <FormContainer getEditData={setFormData}>
+    <FormContainer marginTop='0px'>
       <Form
         style={{ maxWidth: '400px' }}
         onSubmit={editData ? editHandler.bind(undefined, editData, formData) : submitHandler}
@@ -84,11 +82,18 @@ const ProductForm = () => {
             placeholder='availability'
             name='availability'
             value={1}
-            checked
+            checked={availability == 1 ? true : false}
             onChange={onchangehandler}
           />
           <label htmlFor='notAvailable'>In stock</label>
-          <FormInput type='radio' placeholder='availability' name='availability' value={0} onChange={onchangehandler} />
+          <FormInput
+            type='radio'
+            placeholder='availability'
+            name='availability'
+            value={0}
+            checked={availability == 0 ? true : false}
+            onChange={onchangehandler}
+          />
           <label htmlFor='Available'>Out of stock</label>
         </div>
         <ButtonContainer>

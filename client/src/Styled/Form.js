@@ -3,7 +3,7 @@ export const FormContainer = styled.div`
   max-width: 800px;
   width: max-content;
   height: 100%;
-  margin-top: 100px;
+  margin-top: ${(props) => props.marginTop || '100px'};
   display: flex;
   justify-content: center;
   align-items: center;

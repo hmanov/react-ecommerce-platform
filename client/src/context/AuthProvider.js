@@ -5,7 +5,7 @@ const getToken = () => localStorage.getItem('token');
 const initialState = {
   token: getToken(),
   isAuth: !!localStorage.getItem('token'),
-  user: {},
+  user: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : {},
   authErrors: [],
 };
 const actionMap = {
