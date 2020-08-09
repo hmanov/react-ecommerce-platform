@@ -4,16 +4,20 @@ import { Slogan, CustomColor, Featured } from '../../Styled/HomeStyled';
 import Card from '../Card';
 import Loading from '../Loading';
 import { ProductContext } from '../../context/ProductProvider';
-import {getProducts} from '../../context/actions/productTypes'
-import {}
+import { getProducts } from '../../context/actions/productTypes';
+import productService from '../../context/actions/productsActions';
 const Home = () => {
   const {
     productState: { isLoading, products },
     productDispatch,
   } = useContext(ProductContext);
-useEffect(()=> {
- 
-})
+  useEffect(() => {
+    const populate = async () => {
+      const res = await productService.getProducts();
+      productDispatch(getProducts(res));
+    };
+    populate();
+  }, [productDispatch]);
   return (
     <ContainerCenter>
       <Slogan>

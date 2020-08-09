@@ -1,11 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { FormContainer, Form, FormInput, FormTitle, FormButton } from '../Styled/Form';
+import { FormContainer, Form, FormInput, FormTitle, FormButton, ButtonContainer } from '../Styled/Form';
 import productService from '../context/actions/productsActions';
 import { ProductContext } from '../context/ProductProvider';
 import { AuthContext } from '../context/AuthProvider';
+import { addProduct, clearEditData, updateProduct } from '../context/actions/productTypes';
 
-const ProductForm = ({ editData }) => {
-  const { productDispatch } = useContext(ProductContext);
+const ProductForm = () => {
+  const {
+    productState: { editData },
+    productDispatch,
+  } = useContext(ProductContext);
   const { authState } = useContext(AuthContext);
   const initialFormData = {
     productName: '',
@@ -31,15 +35,24 @@ const ProductForm = ({ editData }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    createProduct(formData, authState, productDispatch);
+    const res = await productService.createProduct(formData, authState);
+    productDispatch(addProduct(res));
     clearFormData();
   };
-  const editHandler = ({ _id }, data, e) => {
+  const editHandler = async ({ _id }, data, e) => {
     e.preventDefault();
-    console.log(formData);
-    deleteProduct(productDispatch, _id, authState);
+
+    console.log(data);
+    const res = await productService.editProduct(_id, data, authState);
+    productDispatch(updateProduct(res));
+    productDispatch(clearEditData());
+    clearFormData();
+  };
+  const clearFormDataHandler = () => {
+    productDispatch(clearEditData());
+    clearFormData();
   };
   return (
     <FormContainer getEditData={setFormData}>
@@ -78,8 +91,13 @@ const ProductForm = ({ editData }) => {
           <FormInput type='radio' placeholder='availability' name='availability' value={0} onChange={onchangehandler} />
           <label htmlFor='Available'>Out of stock</label>
         </div>
-
-        <FormButton>submit</FormButton>
+        <ButtonContainer>
+          <FormButton>submit</FormButton>
+          <FormButton type='button' style={{ marginLeft: '20px' }} onClick={clearFormDataHandler}>
+            {' '}
+            X
+          </FormButton>
+        </ButtonContainer>
       </Form>
     </FormContainer>
   );

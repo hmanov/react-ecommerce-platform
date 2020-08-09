@@ -15,11 +15,28 @@ const productService = {
           'x-auth-token': user.token,
         },
       });
+      return res;
     } catch (error) {
       return error.response;
     }
   },
-
+  editProduct: async (_id, data, user) => {
+    try {
+      console.log(data);
+      const res = await axios.put(
+        'api/admin',
+        { _id, ...data },
+        {
+          headers: {
+            'x-auth-token': user.token,
+          },
+        }
+      );
+      return res;
+    } catch (error) {
+      return error.response;
+    }
+  },
   deleteProduct: async (data, user) => {
     try {
       return await axios.delete('api/admin', {

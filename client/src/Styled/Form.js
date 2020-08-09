@@ -91,7 +91,9 @@ export const FormInput = styled.input`
 `;
 export const FormButton = styled.button`
   margin-top: 20px;
-  width: 140px;
+  max-width: 140px;
+  width: 100%;
+  padding: 10px 20px;
   height: 40px;
   font-size: 16px;
   letter-spacing: 2px;
@@ -113,4 +115,9 @@ export const FormButton = styled.button`
   &:disabled {
     color: ${(props) => props.theme.dark}!important;
   }
+`;
+export const ButtonContainer = styled.div`
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
 `;

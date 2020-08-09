@@ -20,9 +20,9 @@ router.get('/', auth, async (req, res) => {
 router.post(
   '/register',
   [
-    check('firstName', 'Name is required').not().isEmpty(),
-    check('lastName', 'Name is required').not().isEmpty(),
     check('email', 'Please include valid email').isEmail(),
+    check('firstName', 'First Name is required').not().isEmpty(),
+    check('lastName', 'Last Name is required').not().isEmpty(),
     check('password', 'Please enter a password with 6 or more characters').isLength({ min: 6 }),
   ],
   async (req, res) => {

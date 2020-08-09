@@ -12,7 +12,9 @@ import { Link } from 'react-router-dom';
 import RatingBar from './RatingBar';
 
 const Card = ({ data: { productName, price, sku, imageURL, totalRating }, to }) => {
-  const rate = (e) => {};
+  const rate = (e) => {
+    console.log(e);
+  };
   return (
     <FeaturedCard>
       <Link to={to} style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

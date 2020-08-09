@@ -10,9 +10,12 @@ import Contact from './components/pages/Contact';
 import Register from './components/pages/Register';
 import Profile from './components/pages/Profile';
 import Admin from './components/pages/Admin';
+import Cart from './components/pages/Cart';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './Styled/theme';
+import PrivateRoute from './components/PrivateRoute';
 
+import Error from './components/Error';
 //context
 
 import AuthProvider from './context/AuthProvider';
@@ -26,14 +29,16 @@ const App = () => (
           <ContainerBody>
             <Navbar />
             <Container>
+              <Error />
               <Switch>
                 <Route exact path='/' component={Home} />
                 <Route exact path='/shop' component={Shop} />
                 <Route exact path='/contact' component={Contact} />
                 <Route exact path='/about' component={About} />
                 <Route exact path='/register' component={Register} />
-                <Route exact path='/admin' component={Admin} />
-                <Route exact path='/profile' component={Profile} />
+                <PrivateRoute exact path='/admin' component={Admin} />
+                <PrivateRoute exact path='/cart' component={Cart} />
+                <PrivateRoute exact path='/profile' component={Profile} />
               </Switch>
             </Container>
           </ContainerBody>

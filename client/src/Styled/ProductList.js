@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ProductListContainer = styled.div`
-  max-width: 600px;
+  max-width: 800px;
   width: 100%;
   display: flex;
   flex-direction: column;

@@ -11,10 +11,13 @@ const Admin = () => {
   const { productDispatch } = useContext(ProductContext);
   const [getEditData, setGetEditData] = useState();
 
-  useEffect(async () => {
-    const res = await productService.getProducts();
-    productDispatch(res);
-  }, [productService.getProducts]);
+  useEffect(() => {
+    const populate = async () => {
+      const res = await productService.getProducts();
+      productDispatch(getProducts(res));
+    };
+    populate();
+  }, [productDispatch]);
   return (
     <AdminContainer>
       <ProductList getEditData={(e) => setGetEditData(e)} />

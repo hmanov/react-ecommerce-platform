@@ -4,7 +4,6 @@ import { ContainerCenter } from '../../Styled/Container';
 import { AuthContext } from '../../context/AuthProvider';
 import { login, register } from '../../context/actions/authTypes';
 import authService from '../../context/actions/authActions';
-import Error from '../Error';
 
 const Register = ({ history }) => {
   const { authState, authDispatch } = useContext(AuthContext);
@@ -14,7 +13,6 @@ const Register = ({ history }) => {
       history.push('/');
     }
   });
-
   const [registerFormData, setRegisterFormData] = useState({
     email: '',
     firstName: '',
@@ -49,7 +47,6 @@ const Register = ({ history }) => {
 
   return (
     <ContainerCenter>
-      <Error />
       <FormContainer>
         <Form onSubmit={loginSubmitHandler}>
           <FormTitle>Login</FormTitle>
