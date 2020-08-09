@@ -18,13 +18,24 @@ const Home = () => {
     };
     populate();
   }, [productDispatch]);
+  const calculate = ({ totalRating }) =>
+    totalRating.length > 0
+      ? totalRating.map((e) => e.rating).reduce((acc, val) => acc + val, 0) / totalRating.length
+      : 0;
   return (
     <ContainerCenter>
       <Slogan>
         Check out our <CustomColor> Featurd</CustomColor> <CustomColor>Keyboards</CustomColor>
       </Slogan>
       <Featured>
-        {!isLoading ? products.slice(0, 3).map((e, i) => <Card data={e} key={i} to='/' />) : <Loading />}
+        {!isLoading ? (
+          products
+            .sort((a, b) => calculate(b) - calculate(a))
+            .slice(0, 3)
+            .map((e, i) => <Card data={e} key={i} to='/' />)
+        ) : (
+          <Loading />
+        )}
       </Featured>
     </ContainerCenter>
   );

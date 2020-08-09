@@ -9,25 +9,26 @@ const initialState = {
 };
 
 const actionMap = {
-  [actionTypes.GetAllPRoductsSuccess]: (state, data) => ({ ...state, products: data, isLoading: false }),
-  [actionTypes.DeleteProductSuccess]: (state, data) => ({
+  [actionTypes.GetAllPRoductsSuccess]: (state, payload) => ({ ...state, products: payload, isLoading: false }),
+  [actionTypes.DeleteProductSuccess]: (state, payload) => ({
     ...state,
-    products: state.products.filter((e) => e._id !== data),
+    products: state.products.filter((e) => e._id !== payload),
   }),
-  [actionTypes.GetAllPRoductsSuccess]: (state, data) => ({ ...state, products: data, isLoading: false }),
-  [actionTypes.AddProductSuccess]: (state, data) => ({ ...state, products: [...state.products, data] }),
-  [actionTypes.AddProductfailure]: (state, data) => ({ ...state, productErrors: data.errors }),
-  [actionTypes.SetEditData]: (state, data) => ({ ...state, editData: data }),
-  [actionTypes.ClearEditData]: (state, data) => ({ ...state, editData: null }),
+  [actionTypes.GetAllPRoductsSuccess]: (state, payload) => ({ ...state, products: payload, isLoading: false }),
+  [actionTypes.AddProductSuccess]: (state, payload) => ({ ...state, products: [...state.products, payload] }),
+  [actionTypes.AddProductfailure]: (state, payload) => ({ ...state, productErrors: payload.errors }),
+  [actionTypes.SetEditData]: (state, payload) => ({ ...state, editData: payload }),
+  [actionTypes.ClearEditData]: (state) => ({ ...state, editData: null }),
   [actionTypes.ClearErrors]: (state) => ({ ...state, productErrors: [] }),
-  [actionTypes.UpdateProductSuccess]: (state, data) => ({
+  [actionTypes.UpdateProductSuccess]: (state, payload) => ({
     ...state,
-    products: state.products.map((e) => (e._id === data._id ? data : e)),
+    products: state.products.map((e) => (e._id === payload._id ? payload : e)),
   }),
-  [actionTypes.RateSuccess]: (state, data) => ({
+  [actionTypes.RateSuccess]: (state, payload) => ({
     ...state,
-    products: state.products.map((e) => (e._id === data.productId ? { ...e, totalRating: data.data } : e)),
+    products: state.products.map((e) => (e._id === payload.productId ? { ...e, totalRating: payload.data } : e)),
   }),
+  [actionTypes.RateFailure]: (state, payload) => ({ ...state, productErrors: [payload.data] }),
 };
 export const ProductContext = createContext();
 

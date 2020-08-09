@@ -40,9 +40,11 @@ const RatingBar = ({ totalRating, productId }) => {
       />
 
       {calculatedRating() ? (
-        <span>
+        <span style={{ fontSize: '14px' }}>
+          {'('}
           {calculatedRating()}
-          {' on '} {totalRating.length}
+          {'  from '} {totalRating.length}
+          {')'}
         </span>
       ) : (
         <span> Not rated yet</span>
