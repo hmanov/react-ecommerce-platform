@@ -21,4 +21,8 @@ export const ClearBtn = styled.button`
   background-color: #fff;
   border: 2px solid ${(props) => props.theme.primary};
   border-radius: 5px;
+  &:focus {
+    border: 3px solid ${(props) => props.theme.primary};
+    outline: none;
+  }
 `;
