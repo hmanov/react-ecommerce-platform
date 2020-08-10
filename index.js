@@ -3,7 +3,7 @@ const { urlencoded } = require('express');
 const app = express();
 const cors = require('cors');
 const Product = require('./models/Product');
-
+const path = require('path');
 const connectDB = require('./config/dbConnect');
 connectDB();
 app.use(cors());
