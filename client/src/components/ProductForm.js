@@ -83,7 +83,7 @@ const ProductForm = () => {
             placeholder='availability'
             name='availability'
             value={1}
-            checked={+availability === 1 ? true : false}
+            checked={Number(availability) === 1 ? true : false}
             onChange={onchangehandler}
           />
           <label htmlFor='notAvailable'>In stock</label>
@@ -92,7 +92,7 @@ const ProductForm = () => {
             placeholder='availability'
             name='availability'
             value={0}
-            checked={+availability === 0 ? true : false}
+            checked={Number(availability) === 0 ? true : false}
             onChange={onchangehandler}
           />
           <label htmlFor='Available'>Out of stock</label>

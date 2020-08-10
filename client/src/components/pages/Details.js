@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
 const Details = ({ location: { productData }, history }) => {
-  const { imageURL, price, SKU, productName, date, totalRating, availability } = productData || {};
+  const { _id, imageURL, price, SKU, productName, date, totalRating, availability } = productData || {};
 
   return productData ? (
     <DetailsContainer>
@@ -16,7 +16,7 @@ const Details = ({ location: { productData }, history }) => {
       </ImageContainer>
       <InfoContainer>
         <h3>{productName}</h3>
-        <RatingBar totalRating={totalRating} />
+        <RatingBar totalRating={totalRating} productId={_id} />
         <PriceTag>${price.toFixed(2)}</PriceTag>
         <DetailsSpan>
           <strong>Availability: </strong>{' '}

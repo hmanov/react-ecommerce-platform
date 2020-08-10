@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Filter as StyledFilter } from '../Styled/Filter';
 const Filter = ({ getFilterValue, isSelected }) => {
-  const categories = ['Full Size', 'TKL', '65%', '60%'];
+  const categories = ['FullSize', 'TKL', '65%', '60%'];
   const [filterValue, setFilterValue] = useState('Filter');
   const [value, setValue] = useState();
   const onSelectHandler = (e) => {
