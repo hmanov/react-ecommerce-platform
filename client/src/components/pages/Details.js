@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
 const Details = ({ location: { productData }, history }) => {
-  const { imageURL, price, SKU, categories, productName, date, totalRating, availability } = productData || {};
+  const { imageURL, price, SKU, productName, date, totalRating, availability } = productData || {};
 
   return productData ? (
     <DetailsContainer>
