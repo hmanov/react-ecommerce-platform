@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Filter as StyledFilter } from '../Styled/Filter';
-const Filter = () => {
+const Filter = ({ getFilterValue }) => {
   const categories = ['Full Size', 'TKL', '65%', '60%'];
   const [filterValue, setFilterValue] = useState('Filter');
   const onSelectHandler = (e) => {
@@ -9,6 +9,7 @@ const Filter = () => {
     } else {
       setFilterValue('All Products');
     }
+    getFilterValue(e.target.value);
   };
   return (
     <StyledFilter onChange={onSelectHandler}>
