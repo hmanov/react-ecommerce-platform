@@ -30,6 +30,7 @@ const ProductForm = () => {
   }, [editData]);
 
   const { productName, price, imageURL, categories, SKU, availability } = formData;
+
   const clearFormData = () => setFormData(initialFormData);
   const onchangehandler = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -82,7 +83,7 @@ const ProductForm = () => {
             placeholder='availability'
             name='availability'
             value={1}
-            checked={availability == 1 ? true : false}
+            checked={+availability === 1 ? true : false}
             onChange={onchangehandler}
           />
           <label htmlFor='notAvailable'>In stock</label>
@@ -91,7 +92,7 @@ const ProductForm = () => {
             placeholder='availability'
             name='availability'
             value={0}
-            checked={availability == 0 ? true : false}
+            checked={+availability === 0 ? true : false}
             onChange={onchangehandler}
           />
           <label htmlFor='Available'>Out of stock</label>

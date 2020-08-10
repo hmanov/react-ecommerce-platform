@@ -3,7 +3,7 @@ import { ShopTitle, FilterContainer, ClearBtn } from '../../Styled/ShopStyled';
 import { ContainerCenter } from '../../Styled/Container';
 import productService from '../../context/actions/productsActions';
 import { getProducts } from '../../context/actions/productTypes';
-import { Slogan, CustomColor, Featured } from '../../Styled/HomeStyled';
+import { Featured } from '../../Styled/HomeStyled';
 import Card from '../Card';
 import Loading from '../Loading';
 import { ProductContext } from '../../context/ProductProvider';

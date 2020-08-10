@@ -12,7 +12,7 @@ const Details = ({ location: { productData }, history }) => {
   return productData ? (
     <DetailsContainer>
       <ImageContainer>
-        <img style={{ maxHeight: '100%', maxWidth: '100%' }} src={imageURL} />
+        <img style={{ maxHeight: '100%', maxWidth: '100%' }} alt='img' src={imageURL} />
       </ImageContainer>
       <InfoContainer>
         <h3>{productName}</h3>
