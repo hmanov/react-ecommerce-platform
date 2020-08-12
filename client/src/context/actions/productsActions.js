@@ -64,5 +64,22 @@ const productService = {
       return error.response;
     }
   },
+  updateCartProducts: async ({ token }, itemId, count) => {
+    try {
+      const res = await axios.post(
+        '/api/cart',
+        { itemId, count },
+        {
+          headers: {
+            'x-auth-token': token,
+          },
+        }
+      );
+      return res;
+    } catch (error) {
+      return error.response;
+    }
+  },
 };
+
 export default productService;

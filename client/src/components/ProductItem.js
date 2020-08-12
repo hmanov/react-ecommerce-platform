@@ -8,6 +8,7 @@ import { ProductContext } from '../context/ProductProvider';
 import { deleteProduct, setEditData } from '../context/actions/productTypes';
 import productService from '../context/actions/productsActions';
 import { NavigationLink } from '../Styled/Header';
+
 const ProductItem = ({ productData: { productName, price, _id }, productData }) => {
   const { authState } = useContext(AuthContext);
   const { productDispatch } = useContext(ProductContext);

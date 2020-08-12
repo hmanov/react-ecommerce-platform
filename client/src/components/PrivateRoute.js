@@ -5,9 +5,8 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   const {
     authState: { isAuth },
   } = useContext(AuthContext);
-  return (
-    <Route {...rest} render={(props) => (isAuth === true ? <Component {...props} /> : <Redirect to='/register' />)} />
-  );
+
+  return <Route {...rest} render={(props) => (isAuth ? <Component {...props} /> : <Redirect to='/register' />)} />;
 };
 
 export default PrivateRoute;

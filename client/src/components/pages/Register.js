@@ -2,14 +2,24 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Form, FormInput, FormTitle, FormButton, FormContainer } from '../../Styled/Form';
 import { ContainerCenter } from '../../Styled/Container';
 import { AuthContext } from '../../context/AuthProvider';
+import { ProductContext } from '../../context/ProductProvider';
 import { login, register } from '../../context/actions/authTypes';
 import authService from '../../context/actions/authActions';
+import productService from '../../context/actions/productsActions';
+import { addToCart } from '../../context/actions/productTypes';
 
 const Register = ({ history }) => {
   const { authState, authDispatch } = useContext(AuthContext);
+  const { productDispatch } = useContext(ProductContext);
 
   useEffect(() => {
+    const populateCart = async () => {
+      const cart = await productService.updateCartProducts(authState, null, 0);
+      productDispatch(addToCart(cart));
+    };
     if (authState.isAuth) {
+      console.log('1');
+      populateCart();
       history.push('/');
     }
   });

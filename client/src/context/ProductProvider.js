@@ -4,8 +4,8 @@ const initialState = {
   isLoading: true,
   products: [],
   productErrors: [],
-  cart: [],
   editData: null,
+  cart: [],
 };
 
 const actionMap = {
@@ -14,7 +14,6 @@ const actionMap = {
     ...state,
     products: state.products.filter((e) => e._id !== payload),
   }),
-  [actionTypes.GetAllPRoductsSuccess]: (state, payload) => ({ ...state, products: payload, isLoading: false }),
   [actionTypes.AddProductSuccess]: (state, payload) => ({ ...state, products: [...state.products, payload] }),
   [actionTypes.AddProductfailure]: (state, payload) => ({ ...state, productErrors: payload.errors }),
   [actionTypes.SetEditData]: (state, payload) => ({ ...state, editData: payload }),
@@ -29,6 +28,8 @@ const actionMap = {
     products: state.products.map((e) => (e._id === payload.productId ? { ...e, totalRating: payload.data } : e)),
   }),
   [actionTypes.RateFailure]: (state, payload) => ({ ...state, productErrors: [payload.data] }),
+
+  [actionTypes.AddToCartSuccess]: (state, payload) => ({ ...state, cart: payload }),
 };
 export const ProductContext = createContext();
 

@@ -17,6 +17,9 @@ export const actionTypes = {
 
   RateSuccess: Symbol('[PROD] Rate Product Success'),
   RateFailure: Symbol('[PROD] Rate Product Failure'),
+
+  AddToCartSuccess: Symbol('[PROD] Added to Cart Success'),
+  AddToCartFailure: Symbol('[PROD] Added to Cart Failure'),
 };
 
 const getProductsSuccess = (data) => ({ type: actionTypes.GetAllPRoductsSuccess, payload: data });
@@ -45,3 +48,7 @@ const rateFailure = (data) => ({ type: actionTypes.rateFailure, payload: data })
 const rateSuccess = (data) => ({ type: actionTypes.RateSuccess, payload: data });
 export const rateProduct = ({ status, data, productId }) =>
   status >= 400 ? rateFailure(data) : rateSuccess({ data, productId });
+
+const addToCartSuccess = (data) => ({ type: actionTypes.AddToCartSuccess, payload: data });
+const addToCartFailure = (data) => ({ type: actionTypes.AddToCartFailure, payload: data });
+export const addToCart = ({ status, data }) => (status >= 400 ? addToCartFailure(data) : addToCartSuccess(data));

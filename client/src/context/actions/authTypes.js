@@ -10,8 +10,8 @@ export const actionTypes = {
   ClearErrors: Symbol('[AUTH] Claer Errors'),
 };
 
-export const loginSuccess = (data) => ({ type: actionTypes.LoginSuccess, payload: data });
-export const loginFailure = (data) => ({ type: actionTypes.LoginFailure, payload: data });
+const loginSuccess = (data) => ({ type: actionTypes.LoginSuccess, payload: data });
+const loginFailure = (data) => ({ type: actionTypes.LoginFailure, payload: data });
 export const login = ({ data, status }) => (status >= 400 ? loginFailure(data) : loginSuccess(data));
 
 export const register = ({ data, status }) => (status >= 400 ? loginFailure(data) : loginSuccess(data));

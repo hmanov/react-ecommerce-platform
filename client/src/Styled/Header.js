@@ -122,8 +122,8 @@ export const ShoppingCartLink = styled(Link)`
 `;
 export const ShoppingCartCounter = styled.div`
   position: absolute;
-  width: 17px;
-  height: 17px;
+  width: 22px;
+  height: 22px;
   background-color: ${(props) => props.theme.primary};
   font-weight: bold;
   right: 0;
@@ -132,4 +132,7 @@ export const ShoppingCartCounter = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  font-size: 12px;
+  color: white;
 `;

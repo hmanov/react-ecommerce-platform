@@ -14,6 +14,7 @@ import { faShoppingCart, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 import { ThemeContext } from 'styled-components';
 import AuthMenu from '../layout/AuthMenu';
 import { AuthContext } from '../../context/AuthProvider';
+import { ProductContext } from '../../context/ProductProvider';
 import { logout } from '../../context/actions/authTypes';
 import authService from '../../context/actions/authActions';
 const Header = () => {
@@ -23,6 +24,11 @@ const Header = () => {
     authState: { isAuth },
     authDispatch,
   } = useContext(AuthContext);
+  const {
+    productState: { cart },
+  } = useContext(ProductContext);
+
+  const getCartItemsCount = () => cart.map((e) => e.count).reduce((a, b) => a + b, 0);
   const onBlurHandler = useCallback(
     (event) => {
       if (wrapperRef.current && !wrapperRef.current.contains(event.target) && isAuthMenuVisible) {
@@ -67,7 +73,7 @@ const Header = () => {
         <ShoppingCartLink to='/cart'>
           <AwesomeIcon icon={faShoppingCart} hovercolor={theme.primary} />
 
-          <ShoppingCartCounter>1</ShoppingCartCounter>
+          <ShoppingCartCounter>{isAuth ? getCartItemsCount() : 0}</ShoppingCartCounter>
         </ShoppingCartLink>
 
         <AwesomeIcon icon={faUser} hovercolor={theme.primary} onClick={userHandler} />

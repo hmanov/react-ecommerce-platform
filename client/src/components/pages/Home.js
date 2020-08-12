@@ -30,7 +30,7 @@ const Home = () => {
       <Featured>
         {!isLoading ? (
           products
-            .sort((a, b) => calculate(b) - calculate(a))
+            .sort((a, b) => calculate(b) - calculate(b))
             .slice(0, 3)
             .map((e, i) => <Card data={e} key={i} to='/' />)
         ) : (

@@ -15,6 +15,7 @@ import Details from './components/pages/Details';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './Styled/theme';
 import PrivateRoute from './components/PrivateRoute';
+import AdminRoute from './components/AdminRoute';
 
 import Error from './components/Error';
 //context
@@ -38,7 +39,7 @@ const App = () => (
                 <Route exact path='/about' component={About} />
                 <Route exact path='/register' component={Register} />
                 <Route exact path='/details' component={Details} />
-                <PrivateRoute exact path='/admin' component={Admin} />
+                <AdminRoute exact path='/admin' component={Admin} />
                 <PrivateRoute exact path='/cart' component={Cart} />
                 <PrivateRoute exact path='/profile' component={Profile} />
               </Switch>
