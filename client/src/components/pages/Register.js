@@ -13,13 +13,7 @@ const Register = ({ history }) => {
   const { productDispatch } = useContext(ProductContext);
 
   useEffect(() => {
-    const populateCart = async () => {
-      const cart = await productService.updateCartProducts(authState, null, 0);
-      productDispatch(addToCart(cart));
-    };
     if (authState.isAuth) {
-      console.log('1');
-      populateCart();
       history.push('/');
     }
   });

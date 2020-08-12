@@ -30,6 +30,7 @@ const actionMap = {
   [actionTypes.RateFailure]: (state, payload) => ({ ...state, productErrors: [payload.data] }),
 
   [actionTypes.AddToCartSuccess]: (state, payload) => ({ ...state, cart: payload }),
+  [actionTypes.ClearProductState]: (state) => ({ ...state, cart: [], isLoading: false }),
 };
 export const ProductContext = createContext();
 

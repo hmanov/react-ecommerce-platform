@@ -20,6 +20,8 @@ export const actionTypes = {
 
   AddToCartSuccess: Symbol('[PROD] Added to Cart Success'),
   AddToCartFailure: Symbol('[PROD] Added to Cart Failure'),
+
+  ClearProductState: Symbol('[PROD] CLEAR STATE'),
 };
 
 const getProductsSuccess = (data) => ({ type: actionTypes.GetAllPRoductsSuccess, payload: data });
@@ -52,3 +54,5 @@ export const rateProduct = ({ status, data, productId }) =>
 const addToCartSuccess = (data) => ({ type: actionTypes.AddToCartSuccess, payload: data });
 const addToCartFailure = (data) => ({ type: actionTypes.AddToCartFailure, payload: data });
 export const addToCart = ({ status, data }) => (status >= 400 ? addToCartFailure(data) : addToCartSuccess(data));
+
+export const clearProductState = () => ({ type: actionTypes.ClearProductState });

@@ -1,7 +1,14 @@
 import React from 'react';
-import { CartContainer } from '../../Styled/Cart';
+import { CartContainer, ItemContainer } from '../../Styled/Cart';
+import CartItem from '../CartItem';
 const Cart = () => {
-  return <CartContainer>i am Cart</CartContainer>;
+  return (
+    <CartContainer>
+      <ItemContainer>
+        <CartItem />
+      </ItemContainer>
+    </CartContainer>
+  );
 };
 
 export default Cart;
