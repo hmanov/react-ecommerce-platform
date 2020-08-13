@@ -29,8 +29,9 @@ const actionMap = {
   }),
   [actionTypes.RateFailure]: (state, payload) => ({ ...state, productErrors: [payload.data] }),
 
-  [actionTypes.AddToCartSuccess]: (state, payload) => ({ ...state, cart: payload }),
+  [actionTypes.AddToCartSuccess]: (state, payload) => ({ ...state, cart: payload, isLoading: false }),
   [actionTypes.ClearProductState]: (state) => ({ ...state, cart: [], isLoading: false }),
+  [actionTypes.Loading]: (state) => ({ ...state, isLoading: true }),
 };
 export const ProductContext = createContext();
 

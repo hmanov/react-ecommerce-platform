@@ -80,6 +80,17 @@ const productService = {
       return error.response;
     }
   },
+  removeCartProduct: async ({ token }, itemId) => {
+    try {
+      const res = await axios.delete('/api/cart', {
+        headers: {
+          'x-auth-token': token,
+        },
+        data: { itemId },
+      });
+      return res;
+    } catch (error) {}
+  },
 };
 
 export default productService;
