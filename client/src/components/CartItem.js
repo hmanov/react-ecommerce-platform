@@ -38,7 +38,8 @@ const CartItem = ({ data }) => {
         <div> {data.count}</div>
         <AwesomeIcon icon={faPlus} onClick={changeQuantity.bind(undefined, 1)} />
       </Field>
-      <Field>${price}</Field>
+      <Field>$ {price !== undefined && price.toFixed(2)}</Field>
+      <Field>${price !== undefined && (price * data.count).toFixed(2)}</Field>
       <Field>
         <AwesomeIcon icon={faTimes} onClick={removeItemfromCart} />
       </Field>

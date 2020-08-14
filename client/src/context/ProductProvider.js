@@ -37,7 +37,7 @@ export const ProductContext = createContext();
 
 export const productReducer = (state, action) => {
   const handler = actionMap[action.type];
-  console.log(handler);
+  console.log(action.type);
   return handler ? handler(state, action.payload) : state;
 };
 

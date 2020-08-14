@@ -10,7 +10,7 @@ export const CartContainer = styled.div`
 `;
 
 export const ItemContainer = styled.div`
-  width: 50%;
+  width: 60%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -33,7 +33,7 @@ export const Field = styled.div`
   display: flex;
 
   align-items: center;
-  flex: 0 0 20%;
+  flex: 0 0 23%;
   &:nth-child(1) {
     flex-direction: column;
     justify-content: center;
@@ -50,4 +50,14 @@ export const Field = styled.div`
   &:nth-child(4) {
     justify-content: center;
   }
+  &:nth-child(5) {
+    flex: 0 0 15%;
+    justify-content: center;
+  }
+`;
+export const SummaryContainer = styled.div`
+  width: 30%;
+  height: 600px;
+  border: 1px solid ${(props) => props.theme.primary};
+  border-radius: 5px;
 `;

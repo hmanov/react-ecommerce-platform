@@ -16,10 +16,10 @@ import AuthMenu from '../layout/AuthMenu';
 import { AuthContext } from '../../context/AuthProvider';
 import { ProductContext } from '../../context/ProductProvider';
 import { logout } from '../../context/actions/authTypes';
-import { addToCart } from '../../context/actions/productTypes';
-import { clearProductState, setLoading } from '../../context/actions/productTypes';
+
+import { clearProductState } from '../../context/actions/productTypes';
 import authService from '../../context/actions/authActions';
-import productService from '../../context/actions/productsActions';
+
 const Header = () => {
   const [isAuthMenuVisible, setIsAuthMenuVisible] = useState(false);
 
@@ -33,16 +33,6 @@ const Header = () => {
     productDispatch,
   } = useContext(ProductContext);
 
-  useEffect(() => {
-    const populateCart = async () => {
-      productDispatch(setLoading());
-      const cart = await productService.updateCartProducts(authState, null, 0);
-      productDispatch(addToCart(cart));
-      if (isAuth) {
-      }
-    };
-    populateCart();
-  }, [isAuth, authState, productDispatch]);
   const getCartItemsCount = () => cart.map((e) => e.count).reduce((a, b) => a + b, 0);
   const onBlurHandler = useCallback(
     (event) => {

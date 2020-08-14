@@ -17,6 +17,7 @@ import { theme } from './Styled/theme';
 import PrivateRoute from './components/PrivateRoute';
 import AdminRoute from './components/AdminRoute';
 
+import DataFetcher from './components/DataFetcher';
 import Error from './components/Error';
 //context
 
@@ -27,6 +28,7 @@ const App = () => (
   <AuthProvider>
     <ProductProvider>
       <ThemeProvider theme={theme}>
+        <DataFetcher />
         <Router>
           <ContainerBody>
             <Navbar />
