@@ -21,7 +21,7 @@ const Summary = () => {
             <div>{(e.count * products.filter((p) => p._id === e.itemId)[0].price).toFixed(2)}</div>
           </div>
         ))}
-      <div>{totalPrice()}</div>
+      <div>{cart.length > 0 && products.length > 0 && totalPrice()}</div>
     </SummaryContainer>
   );
 };
