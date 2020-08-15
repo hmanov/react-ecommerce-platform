@@ -12,7 +12,7 @@ import { rateProduct } from '../context/actions/productTypes';
 const RatingBar = ({ totalRating, productId }) => {
   const calculatedRating = useCallback(() => {
     return totalRating.length > 0
-      ? totalRating.map((e) => e.rating).reduce((acc, val) => acc + val, 0) / totalRating.length
+      ? (totalRating.map((e) => e.rating).reduce((acc, val) => acc + val, 0) / totalRating.length).toFixed(2)
       : 0;
   }, [totalRating]);
 
@@ -25,7 +25,6 @@ const RatingBar = ({ totalRating, productId }) => {
   const theme = useContext(ThemeContext);
   const rateHandler = async (rate) => {
     const res = await productService.rateProduct(authState, productId, rate);
-    console.log(res);
     productDispatch(rateProduct({ ...res, productId }));
   };
   return (

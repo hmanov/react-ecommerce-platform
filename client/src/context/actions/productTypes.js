@@ -22,7 +22,8 @@ export const actionTypes = {
   AddToCartFailure: Symbol('[PROD] Added to Cart Failure'),
 
   ClearProductState: Symbol('[PROD] CLEAR STATE'),
-  Loading: Symbol('PROD Loading true'),
+  Loading: Symbol('[PROD] Loading true'),
+  Filter: Symbol('[PROD] Filter'),
 };
 
 const getProductsSuccess = (data) => ({ type: actionTypes.GetAllPRoductsSuccess, payload: data });
@@ -58,3 +59,4 @@ export const addToCart = ({ status, data }) => (status >= 400 ? addToCartFailure
 
 export const clearProductState = () => ({ type: actionTypes.ClearProductState });
 export const setLoading = () => ({ type: actionTypes.Loading });
+export const filter = (data) => ({ type: actionTypes.Filter, payload: data });

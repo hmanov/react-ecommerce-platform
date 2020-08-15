@@ -1,20 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Filter as StyledFilter } from '../Styled/Filter';
-const Filter = ({ getFilterValue, isSelected }) => {
+import { ProductContext } from '../context/ProductProvider';
+import { filter } from '../context/actions/productTypes';
+const Filter = () => {
   const categories = ['FullSize', 'TKL', '65%', '60%'];
   const [filterValue, setFilterValue] = useState('Filter');
   const [value, setValue] = useState();
+  const { productDispatch } = useContext(ProductContext);
   const onSelectHandler = (e) => {
-    if (e.target.value === 'allProducts') {
+    const value = e.target.value;
+    if (value === 'allProducts') {
       setFilterValue('Filter');
     } else {
       setFilterValue('All Products');
     }
-    getFilterValue(e.target.value);
-    setValue(e.target.value);
+    setValue(value);
+    productDispatch(filter(value));
   };
   return (
-    <StyledFilter onChange={onSelectHandler} value={isSelected ? 'allProducts' : value}>
+    <StyledFilter onChange={onSelectHandler} value={value !== 'fliter' ? value : 'allProducts'}>
       <option value='allProducts'>{filterValue}</option>
       {categories.map((cat, index) => (
         <option key={index} value={cat}>

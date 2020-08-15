@@ -26,7 +26,6 @@ const CartItem = ({ data }) => {
   const item = products.filter((e) => e._id === data.itemId);
 
   const { imageURL, productName, price } = item.length > 0 ? item[0] : {};
-  console.log(imageURL);
   return (
     <Item>
       <Field>

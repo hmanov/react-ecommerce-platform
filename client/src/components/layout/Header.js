@@ -25,7 +25,6 @@ const Header = () => {
 
   const {
     authState: { isAuth },
-    authState,
     authDispatch,
   } = useContext(AuthContext);
   const {

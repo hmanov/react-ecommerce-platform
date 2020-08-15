@@ -9,10 +9,7 @@ const DataFetcher = () => {
     authState: { isAuth },
     authState,
   } = useContext(AuthContext);
-  const {
-    productState: { cart },
-    productDispatch,
-  } = useContext(ProductContext);
+  const { productDispatch } = useContext(ProductContext);
 
   useEffect(() => {
     const populateCart = async () => {
@@ -28,7 +25,7 @@ const DataFetcher = () => {
       populateCart();
     }
     populate();
-  }, [productDispatch, isAuth]);
+  }, [productDispatch, isAuth, authState]);
   return <></>;
 };
 

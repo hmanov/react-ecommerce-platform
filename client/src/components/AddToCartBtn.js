@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { FeaturedCardAddToCart } from '../Styled/Card';
 import { AuthContext } from '../context/AuthProvider';
 import { ProductContext } from '../context/ProductProvider';

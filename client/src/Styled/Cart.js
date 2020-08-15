@@ -57,7 +57,28 @@ export const Field = styled.div`
 `;
 export const SummaryContainer = styled.div`
   width: 30%;
-  height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
   border: 1px solid ${(props) => props.theme.primary};
   border-radius: 5px;
+`;
+export const SummaryItem = styled.div`
+  width: 90%;
+  display: flex;
+  padding: 10px;
+  margin: 20px auto 0 auto;
+  justify-content: space-between;
+  border-radius: 5px;
+  border: 1px solid ${(props) => props.theme.primary};
+`;
+export const TotalPrice = styled.div`
+  width: 90%;
+  margin-top: 200px;
+  padding: 40px 10px;
+  font-size: 34px;
+  font-weight: bold;
+  color: ${(props) => props.theme.primary};
 `;

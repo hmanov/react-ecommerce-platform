@@ -22,7 +22,7 @@ const Home = () => {
       <Featured>
         {!isLoading ? (
           products
-            .sort((a, b) => calculate(b) - calculate(b))
+            .sort((a, b) => calculate(b) - calculate(a))
             .slice(0, 3)
             .map((e, i) => <Card data={e} key={i} to='/' />)
         ) : (

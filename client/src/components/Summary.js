@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { SummaryContainer, Fi } from '../Styled/Cart';
+import { SummaryContainer, SummaryItem, TotalPrice } from '../Styled/Cart';
 import { ProductContext } from '../context/ProductProvider';
 const Summary = () => {
   const {
@@ -16,12 +16,17 @@ const Summary = () => {
       {cart.length > 0 &&
         products.length > 0 &&
         cart.map((e) => (
-          <div>
-            <div></div>
-            <div>{(e.count * products.filter((p) => p._id === e.itemId)[0].price).toFixed(2)}</div>
-          </div>
+          <SummaryItem key={e.itemId}>
+            <div style={{ flex: '0 0 50%' }}>{products.filter((p) => p._id === e.itemId)[0].productName}</div>
+            <div>Qty: {e.count}</div>
+            <div>${(e.count * products.filter((p) => p._id === e.itemId)[0].price).toFixed(2)}</div>
+          </SummaryItem>
         ))}
-      <div>{cart.length > 0 && products.length > 0 && totalPrice()}</div>
+
+      <TotalPrice>
+        {' '}
+        <small>TOTAL: </small> {'  '}${cart.length > 0 && products.length > 0 && totalPrice()}
+      </TotalPrice>
     </SummaryContainer>
   );
 };
