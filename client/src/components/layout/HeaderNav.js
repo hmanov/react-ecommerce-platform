@@ -10,7 +10,6 @@ const HeaderNav = () => {
         <NavigationLink to='/'>Home</NavigationLink>
         <NavigationLink to='/shop'>Shop</NavigationLink>
         <NavigationLink to='/contact'>Contacts</NavigationLink>
-        <NavigationLink to='/about'>About</NavigationLink>
       </NavLinksContainer>
     </NavContainer>
   );

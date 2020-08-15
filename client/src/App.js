@@ -4,7 +4,6 @@ import './App.css';
 import { ContainerBody, Container } from './Styled/Container';
 import Navbar from './components/layout/Navbar';
 import Home from './components/pages/Home';
-import About from './components/pages/About';
 import Shop from './components/pages/Shop';
 import Contact from './components/pages/Contact';
 import Register from './components/pages/Register';
@@ -38,7 +37,6 @@ const App = () => (
                 <Route exact path='/' component={Home} />
                 <Route exact path='/shop' component={Shop} />
                 <Route exact path='/contact' component={Contact} />
-                <Route exact path='/about' component={About} />
                 <Route exact path='/register' component={Register} />
                 <Route exact path='/details' component={Details} />
                 <AdminRoute exact path='/admin' component={Admin} />
