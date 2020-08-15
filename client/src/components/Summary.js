@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { SummaryContainer, SummaryItem, TotalPrice, CheckOut } from '../Styled/Cart';
 import { ProductContext } from '../context/ProductProvider';
-const Summary = () => {
+import { withRouter } from 'react-router-dom';
+const Summary = ({ history }) => {
   const {
     productState: { products, cart },
   } = useContext(ProductContext);
@@ -10,7 +11,12 @@ const Summary = () => {
       .map((e) => ({ count: e.count, price: products.filter((c) => c._id === e.itemId)[0].price }))
       .reduce((a, b) => a + b.count * b.price, 0)
       .toFixed(2);
-
+  const checkoutHandler = () => {
+    if (cart.length > 0) {
+      console.log('checout');
+      history.push('/checkout');
+    }
+  };
   return (
     <SummaryContainer>
       {cart.length > 0 &&
@@ -27,9 +33,9 @@ const Summary = () => {
         {' '}
         <small>TOTAL: </small> {'  '}${cart.length > 0 && products.length > 0 && totalPrice()}
       </TotalPrice>
-      <CheckOut>CheckOut</CheckOut>
+      <CheckOut onClick={checkoutHandler}>CheckOut</CheckOut>
     </SummaryContainer>
   );
 };
 
-export default Summary;
+export default withRouter(Summary);

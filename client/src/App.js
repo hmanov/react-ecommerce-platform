@@ -11,6 +11,7 @@ import Profile from './components/pages/Profile';
 import Admin from './components/pages/Admin';
 import Cart from './components/pages/Cart';
 import Details from './components/pages/Details';
+import Checkout from './components/pages/Checkout';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './Styled/theme';
 import PrivateRoute from './components/PrivateRoute';
@@ -42,6 +43,7 @@ const App = () => (
                 <AdminRoute exact path='/admin' component={Admin} />
                 <PrivateRoute exact path='/cart' component={Cart} />
                 <PrivateRoute exact path='/profile' component={Profile} />
+                <PrivateRoute exact path='/checkout' component={Checkout} />
               </Switch>
             </Container>
           </ContainerBody>

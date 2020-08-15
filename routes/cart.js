@@ -37,4 +37,10 @@ router.delete('/', auth, async (req, res) => {
 
   res.send(user.cart);
 });
+router.delete('/clear', auth, async (req, res) => {
+  const user = await User.findById(req.user.id);
+  user.cart = [];
+  await user.save();
+  res.send(user.cart);
+});
 module.exports = router;

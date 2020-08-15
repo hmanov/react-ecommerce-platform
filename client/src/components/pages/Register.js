@@ -2,12 +2,13 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Form, FormInput, FormTitle, FormButton, FormContainer } from '../../Styled/Form';
 import { ContainerCenter } from '../../Styled/Container';
 import { AuthContext } from '../../context/AuthProvider';
-import { login, register } from '../../context/actions/authTypes';
+import { login, register as registerFunc } from '../../context/actions/authTypes';
 import authService from '../../context/actions/authActions';
+import { useForm } from 'react-hook-form';
 
 const Register = ({ history }) => {
   const { authState, authDispatch } = useContext(AuthContext);
-
+  const { register, handleSubmit, watch, errors } = useForm();
   useEffect(() => {
     if (authState.isAuth) {
       history.push('/');
@@ -21,50 +22,47 @@ const Register = ({ history }) => {
     repeatPassword: '',
   });
 
-  const [loginFormData, setLoginFormData] = useState({
-    email: '',
-    password: '',
-  });
-
   const { email, firstName, lastName, password, repeatPassword } = registerFormData;
   const registerSubmitHandler = async (e) => {
     e.preventDefault();
     const res = await authService.register(registerFormData);
-    authDispatch(register(res));
+    authDispatch(registerFunc(res));
   };
   const loginSubmitHandler = async (e) => {
-    e.preventDefault();
-    const res = await authService.login(loginFormData);
+    const res = await authService.login(e);
     authDispatch(login(res));
   };
 
   const registerOnChangeHandler = (e) => {
     setRegisterFormData({ ...registerFormData, [e.target.name]: e.target.value });
   };
-  const loginOnChangeHandler = (e) => {
-    setLoginFormData({ ...loginFormData, [e.target.name]: e.target.value });
-  };
 
   return (
     <ContainerCenter>
       <FormContainer>
-        <Form onSubmit={loginSubmitHandler}>
+        <Form onSubmit={handleSubmit(loginSubmitHandler)}>
           <FormTitle>Login</FormTitle>
           <FormInput
             placeholder='Email'
             name='email'
             type='email'
-            value={loginFormData.email}
-            onChange={loginOnChangeHandler}
-          />
+            // onChange={loginOnChangeHandler}
+            ref={register({
+              required: true,
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: 'invalid email address',
+              },
+            })}
+          />{' '}
+          {errors.email && <span>Email is required</span>}
           <FormInput
             placeholder='Password'
             name='password'
             type='password'
-            value={loginFormData.password}
-            onChange={loginOnChangeHandler}
+            ref={register({ required: true, minLength: 6 })}
           />
-
+          {errors.password && <span>6 char password required</span>}
           <FormButton>Login</FormButton>
         </Form>
         <Form onSubmit={registerSubmitHandler}>

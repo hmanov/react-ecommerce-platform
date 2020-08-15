@@ -28,6 +28,7 @@ const actionMap = {
   [actionTypes.UpdateProductSuccess]: (state, payload) => ({
     ...state,
     products: state.products.map((e) => (e._id === payload._id ? payload : e)),
+    filteredData: state.filteredData.map((e) => (e._id === payload._id ? payload : e)),
   }),
   [actionTypes.RateSuccess]: (state, payload) => ({
     ...state,

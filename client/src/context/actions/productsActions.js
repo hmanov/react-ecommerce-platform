@@ -22,7 +22,6 @@ const productService = {
   },
   editProduct: async (_id, data, user) => {
     try {
-      console.log(data);
       const res = await axios.put(
         'api/admin',
         { _id, ...data },
@@ -89,7 +88,21 @@ const productService = {
         data: { itemId },
       });
       return res;
-    } catch (error) {}
+    } catch (error) {
+      return error.response;
+    }
+  },
+  clearCart: async ({ token }) => {
+    try {
+      const res = await axios.delete('/api/cart/clear', {
+        headers: {
+          'x-auth-token': token,
+        },
+      });
+      return res;
+    } catch (error) {
+      return error.response;
+    }
   },
 };
 

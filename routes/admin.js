@@ -34,7 +34,6 @@ router.post(
       availability,
     });
     await product.save();
-    console.log(product);
     res.send(product);
   }
 );

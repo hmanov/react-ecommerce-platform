@@ -7,7 +7,7 @@ export const UserCardContainer = styled.div`
   width: 100%;
   max-height: 650px;
   height: 100%;
-  border: 1px solid black;
+  border: 1px solid ${(props) => props.theme.primary};
   border-radius: 5px;
 `;
 
@@ -18,3 +18,4 @@ export const UserImage = styled.img`
   border-radius: 50%;
   border: 1px solid ${(props) => props.theme.primary};
 `;
+export const InfoContainer = styled.div``;
