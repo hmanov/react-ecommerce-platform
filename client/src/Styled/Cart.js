@@ -76,9 +76,28 @@ export const SummaryItem = styled.div`
 `;
 export const TotalPrice = styled.div`
   width: 90%;
-  margin-top: 200px;
+  margin: 100px auto 0 auto;
   padding: 40px 10px;
-  font-size: 34px;
+  font-size: 26px;
   font-weight: bold;
+  text-align: center;
   color: ${(props) => props.theme.primary};
+`;
+export const CheckOut = styled.button`
+  margin: 0 0 20px 0;
+  width: 160px;
+  height: 50px;
+  cursor: pointer;
+  background-color: ${(props) => props.theme.primary};
+  border: 1px solid ${(props) => props.theme.primary};
+  color: ${(props) => props.theme.primary};
+  border-radius: 5px;
+  font-size: 20px;
+  background: linear-gradient(to right, ${(props) => props.theme.darken} 50%, white 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background-position: left bottom;
+  }
 `;

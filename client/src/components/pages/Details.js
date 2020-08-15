@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ProductContext } from '../../context/ProductProvider';
 import { Redirect } from 'react-router-dom';
 import { DetailsContainer, ImageContainer, InfoContainer, PriceTag, DetailsSpan } from '../../Styled/Details';
 import RatingBar from '../RatingBar';
-import { FeaturedCardAddToCart } from '../../Styled/Card';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
+import AddTocCardBtn from '../AddToCartBtn';
 const Details = ({ location: { productData }, history }) => {
-  const { _id, imageURL, price, SKU, productName, date, totalRating, availability } = productData || {};
-
+  const { _id } = productData || {};
+  const {
+    productState: { products },
+  } = useContext(ProductContext);
+  const { imageURL, price, SKU, productName, date, totalRating, availability } =
+    products.filter((e) => e._id === _id)[0] || {};
   return productData ? (
     <DetailsContainer>
       <ImageContainer>
@@ -32,10 +35,7 @@ const Details = ({ location: { productData }, history }) => {
           {moment(date).format('DD-MM-YYYY HH:MM')}
         </DetailsSpan>
         {}
-        <FeaturedCardAddToCart>
-          <FontAwesomeIcon icon={faShoppingCart} style={{ fontSize: '25px', zIndex: '5' }} />
-          Add To Cart
-        </FeaturedCardAddToCart>
+        <AddTocCardBtn _id={_id} />
       </InfoContainer>
     </DetailsContainer>
   ) : (

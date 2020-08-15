@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { ShopTitle, FilterContainer, ClearBtn } from '../../Styled/ShopStyled';
+import { ShopTitle, FilterContainer } from '../../Styled/ShopStyled';
 import { ContainerCenter } from '../../Styled/Container';
 import productService from '../../context/actions/productsActions';
 import { getProducts } from '../../context/actions/productTypes';
@@ -27,7 +27,6 @@ const Shop = () => {
       <ShopTitle>PRODUCTS</ShopTitle>
       <FilterContainer>
         <Filter />
-        <ClearBtn>Clear Filter</ClearBtn>
       </FilterContainer>
       <Featured>{!isLoading ? filteredData.map((e, i) => <Card data={e} key={i} to='/' />) : <Loading />}</Featured>
     </ContainerCenter>

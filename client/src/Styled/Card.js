@@ -63,11 +63,11 @@ export const FeaturedCardAddToCart = styled.button`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  border: 1px solid ${(props) => props.theme.dark};
+  border: 1px solid ${(props) => props.theme.primary};
   color: ${(props) => props.theme.primary};
   background-color: ${(props) => props.theme.primary};
   cursor: pointer;
-  background: linear-gradient(to right, ${(props) => props.theme.dark} 50%, white 50%);
+  background: linear-gradient(to right, ${(props) => props.theme.darken} 50%, white 50%);
   background-size: 200% 100%;
   background-position: right bottom;
   transition: all 0.3s ease-in-out;

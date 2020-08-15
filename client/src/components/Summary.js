@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { SummaryContainer, SummaryItem, TotalPrice } from '../Styled/Cart';
+import { SummaryContainer, SummaryItem, TotalPrice, CheckOut } from '../Styled/Cart';
 import { ProductContext } from '../context/ProductProvider';
 const Summary = () => {
   const {
@@ -27,6 +27,7 @@ const Summary = () => {
         {' '}
         <small>TOTAL: </small> {'  '}${cart.length > 0 && products.length > 0 && totalPrice()}
       </TotalPrice>
+      <CheckOut>CheckOut</CheckOut>
     </SummaryContainer>
   );
 };

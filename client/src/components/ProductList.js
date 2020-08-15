@@ -5,12 +5,12 @@ import Productitem from './ProductItem';
 import { Loader } from '../Styled/Loader';
 const ProductList = () => {
   const {
-    productState: { products, isLoading },
+    productState: { isLoading, filteredData },
   } = useContext(ProductContext);
 
   return (
     <ProductListContainer>
-      {isLoading ? <Loader marginTop='0px' /> : products.map((e, i) => <Productitem productData={e} key={i} />)}
+      {isLoading ? <Loader marginTop='0px' /> : filteredData.map((e, i) => <Productitem productData={e} key={i} />)}
     </ProductListContainer>
   );
 };
