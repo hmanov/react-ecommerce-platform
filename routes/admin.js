@@ -75,7 +75,6 @@ router.put(
 );
 
 router.delete('/', auth, admin, async (req, res) => {
-  console.log(req.body);
   try {
     await Product.findByIdAndRemove(req.body.data);
     res.send(req.body.data);

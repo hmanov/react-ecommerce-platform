@@ -48,7 +48,7 @@ const updateProductFailure = (data) => ({ type: actionTypes.UpdateProductFailure
 export const updateProduct = ({ status, data }) =>
   status >= 400 ? updateProductFailure(data) : updateProductSuccess(data);
 
-const rateFailure = (data) => ({ type: actionTypes.rateFailure, payload: data });
+const rateFailure = (data) => ({ type: actionTypes.RateFailure, payload: data });
 const rateSuccess = (data) => ({ type: actionTypes.RateSuccess, payload: data });
 export const rateProduct = ({ status, data, productId }) =>
   status >= 400 ? rateFailure(data) : rateSuccess({ data, productId });

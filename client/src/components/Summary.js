@@ -13,7 +13,6 @@ const Summary = ({ history }) => {
       .toFixed(2);
   const checkoutHandler = () => {
     if (cart.length > 0) {
-      console.log('checout');
       history.push('/checkout');
     }
   };

@@ -7,7 +7,7 @@ const AdminRoute = ({ adminRights, component: Component, ...rest }) => {
       user: { isAdmin },
     },
   } = useContext(AuthContext);
-  console.log(isAdmin);
+
   return <Route {...rest} render={(props) => (isAdmin ? <Component {...props} /> : <Redirect to='/register' />)} />;
 };
 

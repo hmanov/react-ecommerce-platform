@@ -21,7 +21,7 @@ const Shop = () => {
     };
     populate();
   }, [productDispatch]);
-  console.log('ddd');
+
   return (
     <ContainerCenter>
       <ShopTitle>PRODUCTS</ShopTitle>

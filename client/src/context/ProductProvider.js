@@ -37,7 +37,7 @@ const actionMap = {
       e._id === payload.productId ? { ...e, totalRating: payload.data } : e
     ),
   }),
-  [actionTypes.RateFailure]: (state, payload) => ({ ...state, productErrors: [payload.data] }),
+  // [actionTypes.RateFailure]: (state, payload) => ({ ...state, productErrors: [payload.data] }),
 
   [actionTypes.AddToCartSuccess]: (state, payload) => ({ ...state, cart: payload, isLoading: false }),
   [actionTypes.ClearProductState]: (state) => ({ ...state, cart: [], isLoading: false }),
@@ -54,7 +54,6 @@ export const ProductContext = createContext();
 
 export const productReducer = (state, action) => {
   const handler = actionMap[action.type];
-  console.log(action.type);
   return handler ? handler(state, action.payload) : state;
 };
 
